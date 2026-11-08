@@ -2,7 +2,7 @@ name: p1024_c16_cache_on
 model: Qwen/Qwen2.5-7B-Instruct
 
 server:
-  prefix_caching: true          # true = 開，false = 加 --no-enable-prefix-caching
+  prefix_caching: true          # true = on, false = adds --no-enable-prefix-caching
   max_model_len: 8192
   gpu_memory_utilization: 0.90
   max_num_seqs: 256

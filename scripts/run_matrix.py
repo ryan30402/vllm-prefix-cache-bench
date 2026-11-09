@@ -40,6 +40,9 @@ def expand(matrix: dict) -> list[dict]:
             }
             cache = "on" if params["prefix_caching"] else "off"
             cfg["name"] = f"p{params['prefix_len']}_c{params['max_concurrency']}_cache_{cache}_r{rep}"
+            cfg["tag"] = matrix.get("tag", "main")
+            if matrix.get("tag"):
+                cfg["name"] = f"{matrix['tag']}_{cfg['name']}"
             runs.append(cfg)
     return runs
 

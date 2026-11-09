@@ -2,7 +2,7 @@
 
 ## 2026-11-08 first manual run (Step 2)
 
-Setup: Qwen2.5-7B-Instruct, RTX GPU on RunPod, vLLM 0.33.0.
+Setup: Qwen2.5-7B-Instruct, NVIDIA A40 on RunPod, vLLM 0.33.0.
 Workload: prefix 1024 / suffix 256 / output 128, 100 prompts, concurrency 16.
 
 Cache OFF: median TTFT 795 ms, p99 2653 ms, 291.5 tok/s, mean TPOT 44.7 ms

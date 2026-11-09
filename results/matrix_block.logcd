@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/vllm-prefix-cache-bench/scripts/run_matrix.py", line 92, in <module>
+    main()
+  File "/workspace/vllm-prefix-cache-bench/scripts/run_matrix.py", line 77, in main
+    matrix = load_config(sys.argv[1])
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/vllm-prefix-cache-bench/scripts/common.py", line 11, in load_config
+    with open(path) as f:
+         ^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'configs/matrix_block.yaml'

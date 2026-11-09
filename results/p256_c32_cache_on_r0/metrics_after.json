@@ -1,9 +1,9 @@
 {
   "kv_cache_usage_perc": 0.0,
-  "prefix_cache_queries": 35840.0,
-  "prefix_cache_hits": 22464.0,
+  "prefix_cache_queries": 281600.0,
+  "prefix_cache_hits": 152544.0,
   "num_preemptions": 0.0,
-  "prompt_tokens": 35840.0,
-  "generation_tokens": 8960.0,
-  "request_success": 70.0
+  "prompt_tokens": 281600.0,
+  "generation_tokens": 70400.0,
+  "request_success": 550.0
 }

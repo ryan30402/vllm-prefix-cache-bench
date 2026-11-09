@@ -1,0 +1,17 @@
+bench:
+  max_concurrency: 8
+  num_prefixes: 1
+  num_prompts: 500
+  output_len: 128
+  prefix_len: 0
+  suffix_len: 256
+  warmup_prompts: 50
+model: Qwen/Qwen2.5-7B-Instruct
+name: p0_c8_cache_off_r1
+repeat: 1
+server:
+  gpu_memory_utilization: 0.9
+  max_model_len: 8192
+  max_num_seqs: 256
+  port: 8000
+  prefix_caching: false

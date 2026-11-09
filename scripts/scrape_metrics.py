@@ -4,6 +4,7 @@ Usage:
     python scripts/scrape_metrics.py <port> <out_prefix>
     -> writes <out_prefix>.txt (raw) and <out_prefix>.json (parsed)
 """
+
 import json
 import re
 import sys
@@ -23,6 +24,8 @@ WANTED = {
 
 # Each line looks like: name{labels} value   or   name value
 LINE_RE = re.compile(r"^([a-zA-Z_:][a-zA-Z0-9_:]*)(\{[^}]*\})?\s+([-+0-9.eE]+|NaN)$")
+
+
 def parse(text: str) -> dict:
     """Turn Prometheus text into {our_name: value} for the metrics we want."""
     found = {}

@@ -3,6 +3,7 @@
 Usage:
     python scripts/capture_env.py results/some_run/env.json
 """
+
 import json
 import platform
 import subprocess
@@ -13,7 +14,9 @@ from datetime import datetime, timezone
 def run(cmd: list[str]) -> str:
     """Run a shell command and return its output as text. Empty string on failure."""
     try:
-        return subprocess.check_output(cmd, text=True, stderr=subprocess.DEVNULL).strip()
+        return subprocess.check_output(
+            cmd, text=True, stderr=subprocess.DEVNULL
+        ).strip()
     except (subprocess.CalledProcessError, FileNotFoundError):
         return ""
 
@@ -29,11 +32,13 @@ def pip_version(package: str) -> str:
 
 def capture() -> dict:
     """Collect everything we want to know about this machine into one dict."""
-    gpu_query = run([
-        "nvidia-smi",
-        "--query-gpu=name,memory.total,driver_version",
-        "--format=csv,noheader",
-    ])
+    gpu_query = run(
+        [
+            "nvidia-smi",
+            "--query-gpu=name,memory.total,driver_version",
+            "--format=csv,noheader",
+        ]
+    )
     nvcc = run(["nvcc", "--version"])
     return {
         "captured_at": datetime.now(timezone.utc).isoformat(),

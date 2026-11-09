@@ -6,6 +6,7 @@ Usage:
 Works with the default vllm bench serve output (aggregate fields only) and
 with --save-detailed output (per-request ttfts), whichever is present.
 """
+
 import json
 import sys
 from pathlib import Path
@@ -52,7 +53,7 @@ def load_run(run_dir: Path) -> dict | None:
         row.update(
             ttft_mean_ms=float(np.mean(ttft_ms)),
             ttft_p50_ms=pct(ttft_ms, 50),
-ttft_p95_ms=pct(ttft_ms, 95),
+            ttft_p95_ms=pct(ttft_ms, 95),
             ttft_p99_ms=pct(ttft_ms, 99),
         )
     else:
@@ -71,6 +72,7 @@ ttft_p95_ms=pct(ttft_ms, 95),
     )
     return row
 
+
 def main() -> None:
     root, out = Path(sys.argv[1]), sys.argv[2]
     rows = [r for r in (load_run(d) for d in sorted(root.iterdir()) if d.is_dir()) if r]
@@ -78,7 +80,12 @@ def main() -> None:
     df.to_csv(out, index=False)
     print(f"{len(df)} runs -> {out}")
     cols = ["ttft_p50_ms", "ttft_p99_ms", "output_tok_per_s", "cache_hit_rate"]
-    print(df[df.tag == "main"].groupby(["cache", "prefix_len", "concurrency"])[cols].median().round(1))
+    print(
+        df[df.tag == "main"]
+        .groupby(["cache", "prefix_len", "concurrency"])[cols]
+        .median()
+        .round(1)
+    )
 
 
 if __name__ == "__main__":

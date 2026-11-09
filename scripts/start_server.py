@@ -3,6 +3,7 @@
 Usage:
     python scripts/start_server.py configs/example.yaml results/<run_dir>
 """
+
 import subprocess
 import sys
 from pathlib import Path
@@ -13,11 +14,17 @@ from common import load_config, wait_for_server
 def build_server_cmd(cfg: dict) -> list[str]:
     s = cfg["server"]
     cmd = [
-        "vllm", "serve", cfg["model"],
-        "--max-model-len", str(s["max_model_len"]),
-        "--gpu-memory-utilization", str(s["gpu_memory_utilization"]),
-        "--max-num-seqs", str(s["max_num_seqs"]),
-        "--port", str(s["port"]),
+        "vllm",
+        "serve",
+        cfg["model"],
+        "--max-model-len",
+        str(s["max_model_len"]),
+        "--gpu-memory-utilization",
+        str(s["gpu_memory_utilization"]),
+        "--max-num-seqs",
+        str(s["max_num_seqs"]),
+        "--port",
+        str(s["port"]),
     ]
     if not s["prefix_caching"]:
         cmd.append("--no-enable-prefix-caching")

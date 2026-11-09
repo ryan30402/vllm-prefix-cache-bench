@@ -8,6 +8,7 @@ Usage:
     # Compare
     python checks/verify_outputs.py compare checks/outputs_off.json checks/outputs_on.json checks/verify_report.json
 """
+
 import json
 import random
 import sys
@@ -28,7 +29,7 @@ QUESTIONS = [
     "Explain what a KV cache is in one paragraph.",
     "Why is decoding slower than prefill?",
     "What does p99 latency mean?",
-        "Describe PagedAttention briefly.",
+    "Describe PagedAttention briefly.",
     "What is a token?",
 ]
 
@@ -53,7 +54,7 @@ def query(port: int, prompt: str) -> dict:
             "max_tokens": MAX_TOKENS,
             "temperature": 0,
             "seed": 0,
-            "logprobs": 0,          # make the response include token info
+            "logprobs": 0,  # make the response include token info
         },
         timeout=120,
     )
@@ -63,6 +64,7 @@ def query(port: int, prompt: str) -> dict:
         "text": choice["text"],
         "tokens": choice.get("logprobs", {}).get("tokens", []),
     }
+
 
 def collect(port: int, out_path: str) -> None:
     prompts = make_prompts()
@@ -84,7 +86,6 @@ def first_divergence(a: list, b: list) -> int:
     return -1 if len(a) == len(b) else min(len(a), len(b))
 
 
-
 def compare(path_a: str, path_b: str, report_path: str) -> None:
     a = json.load(open(path_a))
     b = json.load(open(path_b))
@@ -96,12 +97,16 @@ def compare(path_a: str, path_b: str, report_path: str) -> None:
         if ra["text"] == rb["text"]:
             identical += 1
         else:
-            diffs.append({
-                "index": i,
-                "first_divergence_token": first_divergence(ra["tokens"], rb["tokens"]),
-                "text_a": ra["text"],
-                "text_b": rb["text"],
-            })
+            diffs.append(
+                {
+                    "index": i,
+                    "first_divergence_token": first_divergence(
+                        ra["tokens"], rb["tokens"]
+                    ),
+                    "text_a": ra["text"],
+                    "text_b": rb["text"],
+                }
+            )
     report = {
         "n": len(a),
         "identical": identical,

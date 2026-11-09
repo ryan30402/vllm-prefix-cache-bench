@@ -7,6 +7,7 @@ Each run gets its own folder under results/ containing config.yaml, env.json,
 server.log, metrics_before/after, warmup.json, bench_result.json, status.json.
 Safe to re-run: completed runs (status.json says ok) are skipped.
 """
+
 import itertools
 import json
 import subprocess
@@ -22,6 +23,7 @@ from common import load_config
 PY = sys.executable
 SCRIPTS = Path(__file__).parent
 
+
 def expand(matrix: dict) -> list[dict]:
     """Turn the sweep lists into one flat config dict per combination per repeat."""
     sweep = matrix["sweep"]
@@ -32,14 +34,21 @@ def expand(matrix: dict) -> list[dict]:
         for rep in range(matrix["repeats"]):
             cfg = {
                 "model": matrix["model"],
-                "server": {**matrix["server_base"], "prefix_caching": params["prefix_caching"]},
-                "bench": {**matrix["bench_base"],
-                          "prefix_len": params["prefix_len"],
-                          "max_concurrency": params["max_concurrency"]},
+                "server": {
+                    **matrix["server_base"],
+                    "prefix_caching": params["prefix_caching"],
+                },
+                "bench": {
+                    **matrix["bench_base"],
+                    "prefix_len": params["prefix_len"],
+                    "max_concurrency": params["max_concurrency"],
+                },
                 "repeat": rep,
             }
             cache = "on" if params["prefix_caching"] else "off"
-            cfg["name"] = f"p{params['prefix_len']}_c{params['max_concurrency']}_cache_{cache}_r{rep}"
+            cfg["name"] = (
+                f"p{params['prefix_len']}_c{params['max_concurrency']}_cache_{cache}_r{rep}"
+            )
             cfg["tag"] = matrix.get("tag", "main")
             if matrix.get("tag"):
                 cfg["name"] = f"{matrix['tag']}_{cfg['name']}"
@@ -56,6 +65,8 @@ def sh(args: list[str]) -> None:
     """Run a command, raise if it fails."""
     print("  $", " ".join(args), flush=True)
     subprocess.run(args, check=True)
+
+
 def run_one(cfg: dict, run_dir: Path) -> None:
     run_dir.mkdir(parents=True, exist_ok=True)
     cfg_path = run_dir / "config.yaml"
@@ -65,17 +76,37 @@ def run_one(cfg: dict, run_dir: Path) -> None:
     try:
         sh([PY, str(SCRIPTS / "capture_env.py"), str(run_dir / "env.json")])
         sh([PY, str(SCRIPTS / "start_server.py"), str(cfg_path), str(run_dir)])
-        sh([PY, str(SCRIPTS / "scrape_metrics.py"), port, str(run_dir / "metrics_before")])
+        sh(
+            [
+                PY,
+                str(SCRIPTS / "scrape_metrics.py"),
+                port,
+                str(run_dir / "metrics_before"),
+            ]
+        )
         sh([PY, str(SCRIPTS / "run_bench.py"), str(cfg_path), str(run_dir)])
-        sh([PY, str(SCRIPTS / "scrape_metrics.py"), port, str(run_dir / "metrics_after")])
+        sh(
+            [
+                PY,
+                str(SCRIPTS / "scrape_metrics.py"),
+                port,
+                str(run_dir / "metrics_after"),
+            ]
+        )
         status = {"ok": True, "seconds": round(time.time() - t0)}
     except Exception:
-        status = {"ok": False, "error": traceback.format_exc(), "seconds": round(time.time() - t0)}
+        status = {
+            "ok": False,
+            "error": traceback.format_exc(),
+            "seconds": round(time.time() - t0),
+        }
         print(status["error"])
     finally:
         if (run_dir / "server.pid").exists():
             subprocess.run([PY, str(SCRIPTS / "stop_server.py"), str(run_dir)])
     (run_dir / "status.json").write_text(json.dumps(status, indent=2))
+
+
 def main() -> None:
     matrix = load_config(sys.argv[1])
     runs = expand(matrix)

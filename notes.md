@@ -48,3 +48,25 @@ Lessons:
 - Add a consistency check to the harvest step (the grep -L above).
 - The block matrix shares server settings with main, so its 6 overlapping
   p2048_c32 runs legitimately reuse main-matrix results.
+
+## 2026-11-09 Greedy-output check (Step 7)
+
+Expected cache on/off to be bitwise identical at temperature=0. It is not:
+off vs on = 17/50 identical within 64 tokens, earliest divergence at token 2.
+
+Controlled follow-up, 50 prompts each, sequential requests (batch size 1):
+- off  vs off_2        50/50  (no cache, repeated)
+- on_2 vs on_3         50/50  (full-prompt cache hit, repeated)
+- off  vs on           17/50  (no cache vs prefix-only hit)
+- off  vs on_2         19/50  (no cache vs full-prompt hit)
+- on   vs on_2         21/50  (prefix-only hit vs full-prompt hit)
+
+Conclusion: outputs are fully reproducible given the same cache state, and
+differ across cache states (none / prefix hit / full hit). The cached path
+feeds attention from stored KV blocks instead of recomputing, giving slightly
+different bf16 numerics; near-tie argmax flips, then the sequence diverges.
+Divergences inspected are paraphrases ("like" vs "such as"), not quality loss.
+Caveat: the shared prefix is one sentence repeated 8x, which may inflate
+near-ties; a natural long system prompt would be a better probe.
+Implication: prefix caching is safe for serving, but any test that asserts
+bitwise reproducibility must pin the cache state (or disable caching).

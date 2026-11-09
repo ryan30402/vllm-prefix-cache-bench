@@ -1,0 +1,205 @@
+{
+  "n": 50,
+  "identical": 17,
+  "identical_ratio": 0.34,
+  "diffs": [
+    {
+      "index": 1,
+      "first_divergence_token": 2,
+      "text_a": " Decoding and prefill are operations in the context of data processing, particularly in the realm of video or audio compression/decompression. Decoding typically involves the reverse process of encoding, where compressed data is expanded to its original form. This process can be complex and may require multiple steps, such as decompression algorithms, which",
+      "text_b": " Decoding involves converting encoded data back into its original form, which can be a complex process depending on the encoding method used. Prefill typically refers to preparing or initializing data before it is needed, which is generally faster as it does not involve complex transformations. Therefore, decoding is often slower than prefill because it requires more"
+    },
+    {
+      "index": 3,
+      "first_divergence_token": 59,
+      "text_a": " PagedAttention is a variant of the attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequences into smaller segments (pages) and processes them independently, reducing the overall computational load while maintaining the ability to capture long-range dependencies. This approach allows for",
+      "text_b": " PagedAttention is a variant of the attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequences into smaller segments (pages) and processes them independently, reducing the overall computational load while maintaining the ability to capture long-range dependencies through inter-page connections."
+    },
+    {
+      "index": 5,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on",
+      "text_b": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources such as databases or file systems. KV"
+    },
+    {
+      "index": 7,
+      "first_divergence_token": 30,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. In other words, it is the threshold above which only 1% of the latency values fall. It is commonly used as a performance metric to understand the worst-case scenario",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. Specifically, it is the threshold below which 99% of latency measurements fall, and above which only 1% of latency measurements fall. This metric is used to"
+    },
+    {
+      "index": 9,
+      "first_divergence_token": 62,
+      "text_a": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or even as a form of currency. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events",
+      "text_b": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or even as a form of currency. They are typically issued through Initial Coin Offerings (ICOs) or other token sales and"
+    },
+    {
+      "index": 10,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on",
+      "text_b": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches"
+    },
+    {
+      "index": 12,
+      "first_divergence_token": 30,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. In other words, it is the threshold above which only 1% of the latency values fall. It is commonly used as a performance metric to understand the worst-case scenario",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. Specifically, it is the threshold below which 99% of latency measurements fall, and above which only 1% of latency measurements fall. This metric is used to"
+    },
+    {
+      "index": 14,
+      "first_divergence_token": 61,
+      "text_a": " A token in the context of computer science and cryptography typically refers to a digital representation of value or an asset that can be transferred on a blockchain network. It often functions as a unit of exchange, similar to cryptocurrency, but can also represent other assets like stocks, commodities, or game items. Tokens are usually created using smart",
+      "text_b": " A token in the context of computer science and cryptography typically refers to a digital representation of value or an asset that can be transferred on a blockchain network. It often functions as a unit of exchange, similar to cryptocurrency, but can also represent other assets like stocks, commodities, or game items. Tokens are usually issued through Initial"
+    },
+    {
+      "index": 15,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources such as databases or file systems. KV",
+      "text_b": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on"
+    },
+    {
+      "index": 17,
+      "first_divergence_token": 29,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. Specifically, it is the threshold below which 99% of the latency measurements fall, and above which only 1% of the measurements lie. This metric is used",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events in a system. It represents the threshold above which only 1% of the latency values fall. This metric is commonly used to measure the performance and responsiveness of systems, particularly"
+    },
+    {
+      "index": 18,
+      "first_divergence_token": 16,
+      "text_a": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This approach reduces the number of attention computations required, making the model more efficient while maintaining performance close",
+      "text_b": " PagedAttention is a variant of the self-attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequence into smaller segments (pages) and processes them independently, reducing the number of attention operations required. This approach allows for more efficient processing of long"
+    },
+    {
+      "index": 19,
+      "first_divergence_token": 2,
+      "text_a": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or financial instruments. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events. Each token is",
+      "text_b": " A token in the context of computer science and cryptography typically refers to a digital representation of value or an asset that can be transferred on a blockchain network. Tokens can represent various things such as cryptocurrencies, utility tokens, or assets like real estate or stocks. They are often used for decentralized applications (dApps) and can be"
+    },
+    {
+      "index": 20,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive storage systems like databases. KV caches operate on the",
+      "text_b": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on"
+    },
+    {
+      "index": 22,
+      "first_divergence_token": 30,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. In other words, it is the threshold above which only 1% of the latency measurements fall. It is commonly used as a performance metric to understand the worst-case scenario",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. Specifically, it is the threshold below which 99% of latency measurements fall, and above which only 1% of latency measurements fall. This metric is used to"
+    },
+    {
+      "index": 23,
+      "first_divergence_token": 8,
+      "text_a": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This allows for more efficient computation and reduced memory usage while maintaining the ability to capture long-range dependencies",
+      "text_b": " PagedAttention is a variant of the attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequence into smaller segments (pages) and processes them independently, reducing the complexity of the attention computation. This approach allows for more efficient handling of long sequences without"
+    },
+    {
+      "index": 24,
+      "first_divergence_token": 60,
+      "text_a": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or financial instruments. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events. Each token is",
+      "text_b": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or financial instruments. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events and can be traded"
+    },
+    {
+      "index": 25,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on",
+      "text_b": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches"
+    },
+    {
+      "index": 27,
+      "first_divergence_token": 17,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the latency value below which 99% of all latency measurements fall. It is used to measure the performance of systems under heavy load by indicating the threshold at which only 1% of requests experience higher latencies. Concise and precise",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. Specifically, it is the threshold below which 99% of latency measurements fall, and above which only 1% of latency measurements fall. This metric is used to"
+    },
+    {
+      "index": 30,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on",
+      "text_b": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources such as databases or file systems. KV"
+    },
+    {
+      "index": 31,
+      "first_divergence_token": 46,
+      "text_a": " Decoding and prefill are operations in the context of data processing, particularly in the realm of computer architecture and instruction set execution. Decoding involves converting machine code into a form that can be executed by the processor, while prefill typically refers to the process of loading instructions into the instruction cache before they are needed.\n\nDec",
+      "text_b": " Decoding and prefill are operations in the context of data processing, particularly in the realm of computer architecture and instruction set execution. Decoding involves converting machine code into a form that can be executed by the processor, while prefill (or prefetching) involves loading data or instructions into the cache before they are needed.\n\n"
+    },
+    {
+      "index": 32,
+      "first_divergence_token": 17,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the latency value below which 99% of all latency measurements fall. It is used to measure the performance of systems under heavy load by indicating the threshold at which only 1% of requests experience higher latencies. Concise and precise",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. In other words, it is the threshold above which only 1% of the latency measurements fall. It is commonly used as a performance metric to understand the worst-case scenario"
+    },
+    {
+      "index": 33,
+      "first_divergence_token": 8,
+      "text_a": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This allows for more efficient computation and reduced memory usage while maintaining the ability to capture long-range dependencies",
+      "text_b": " PagedAttention is a variant of the attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequences into smaller segments (pages) and processes them independently, reducing the overall computational load while maintaining the ability to capture long-range dependencies through cross-page interactions."
+    },
+    {
+      "index": 34,
+      "first_divergence_token": 60,
+      "text_a": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or financial instruments. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events. Each token is",
+      "text_b": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or financial instruments. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events and can be traded"
+    },
+    {
+      "index": 35,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources such as databases or file systems. KV",
+      "text_b": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on"
+    },
+    {
+      "index": 38,
+      "first_divergence_token": 8,
+      "text_a": " PagedAttention is a variant of the attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequence into smaller segments (pages) and processes them independently, reducing the need for global dependencies while maintaining the ability to capture long-range dependencies through periodic interactions between",
+      "text_b": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This approach reduces the number of attention computations required, making the model more efficient while maintaining performance close"
+    },
+    {
+      "index": 40,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on",
+      "text_b": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources such as databases or file systems. KV"
+    },
+    {
+      "index": 41,
+      "first_divergence_token": 19,
+      "text_a": " Decoding and prefill are operations in the context of data processing, particularly in the realm of computer architecture and instruction set execution. Decoding involves converting machine code into a form that can be executed by the processor, while prefill typically refers to the process of loading instructions into the instruction cache before they are needed.\n\nDec",
+      "text_b": " Decoding and prefill are operations in the context of data processing, particularly in the realm of video or audio compression/decompression. Decoding involves the process of converting compressed data back into its original form, which typically requires more computational steps to reverse the encoding process. Prefill, on the other hand, often refers to"
+    },
+    {
+      "index": 42,
+      "first_divergence_token": 17,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the latency value below which 99% of all latency measurements fall. It is used to measure the performance of systems under heavy load by indicating the threshold at which only 1% of requests experience higher latencies. Concise and precise",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. In other words, it is the threshold above which only 1% of the latency values fall. It is commonly used as a performance metric to understand the worst-case scenario"
+    },
+    {
+      "index": 43,
+      "first_divergence_token": 8,
+      "text_a": " PagedAttention is a variant of the attention mechanism used in transformer models, designed to address the computational and memory limitations associated with large sequence lengths. It divides the input sequence into smaller segments (pages) and processes them independently, allowing for more efficient computation and reduced memory usage compared to standard attention mechanisms. This approach enables the",
+      "text_b": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This approach reduces the number of attention computations required, making it more efficient for longer sequences. Each"
+    },
+    {
+      "index": 45,
+      "first_divergence_token": 11,
+      "text_a": " A KV cache, or key-value cache, is a data storage mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources like databases or file systems. KV caches operate on",
+      "text_b": " A KV cache, or key-value cache, is a type of data caching mechanism that stores data in the form of key-value pairs, allowing for fast retrieval based on the key. It is commonly used to improve performance by reducing the need to access slower, more resource-intensive data sources such as databases or file systems. KV"
+    },
+    {
+      "index": 47,
+      "first_divergence_token": 17,
+      "text_a": " P99 latency refers to the 99th percentile latency, which is the maximum latency experienced by 99% of requests or events. In other words, it is the threshold above which only 1% of the latency values fall. It is commonly used as a performance metric to understand the worst-case scenario",
+      "text_b": " P99 latency refers to the 99th percentile latency, which is the latency value below which 99% of all latency measurements fall. It is used to measure the performance of systems under heavy load by indicating the threshold at which only 1% of requests experience higher latencies. Concise and precise"
+    },
+    {
+      "index": 48,
+      "first_divergence_token": 46,
+      "text_a": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This allows for more efficient computation and reduced memory usage while maintaining the ability to capture long-range dependencies",
+      "text_b": " PagedAttention is a variant of the self-attention mechanism used in transformer models. It addresses the computational and memory limitations of standard self-attention by dividing the input sequence into smaller segments (pages) and processing them independently. This approach reduces the number of attention computations required, making it more efficient for longer sequences. Each"
+    },
+    {
+      "index": 49,
+      "first_divergence_token": 36,
+      "text_a": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, utility, or financial instruments. They are typically issued through Initial Coin Offerings (ICOs) or other token generation events and can be traded",
+      "text_b": " A token is a digital asset that represents a unit of value or a specific resource within a blockchain network. Tokens can be used for various purposes such as representing ownership, access rights, or utility within a particular application or ecosystem. They are typically issued through Initial Coin Offerings (ICOs) or other token sales and can"
+    }
+  ]
+}

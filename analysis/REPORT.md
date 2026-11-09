@@ -121,13 +121,16 @@ Concurrency 32 is unaffected. At concurrency 128 the two servers behave
 differently:
 
 - Cache off: 18 preemptions in every repeat, and median TTFT rose from 10.8 s
-  to 35.0 s. TPOT improved (385.5 → 175.7 ms) and throughput rose 7%, which is
-  consistent with the smaller KV pool limiting how many sequences run at once.
-  I did not log the number of running sequences, so this is an interpretation.
+  to 35.0 s. TPOT improved (385.5 → 175.7 ms) and throughput rose 7%, because
+  the smaller KV pool limits how many sequences run at once: the server log
+  shows about 51 running and 75 waiting at 95% KV usage, against about 109
+  running at 56% with the 0.9 setting (`analysis/kv_cache_log.txt`, repeat 0).
 - Cache on: no preemptions and 1.5% lower throughput.
 
 Without the cache, 128 requests need KV memory for 128 x 2,432 = 311,296
 tokens. With it, the prefix is stored once: 2,048 + 128 x 384 = 51,200 tokens.
+The KV pool holds 459,936 tokens at 0.9 and 127,216 at 0.5, so at 0.5 only the
+cache-on demand fits (127,216 / 2,432 = 52 full sequences).
 I expected cached blocks to compete with active requests for memory; with a
 single shared prefix the opposite happened. A workload with many distinct
 prefixes is needed to test that case.
@@ -184,8 +187,7 @@ throughput, TPOT and p99 TTFT.
   arrivals, so latency under overload reflects the client as well.
 - **Aggregates only.** Default `vllm bench serve` output: p99 is the per-run
   p99, then the median of 3 runs. No p95 and no end-to-end latency.
-- **Scope.** One model, one GPU, one vLLM version, 3 repeats. The KV pool
-  size in tokens was not recorded.
+- **Scope.** One model, one GPU, one vLLM version, 3 repeats.
 
 ## Reproduce
 

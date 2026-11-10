@@ -70,3 +70,10 @@ Caveat: the shared prefix is one sentence repeated 8x, which may inflate
 near-ties; a natural long system prompt would be a better probe.
 Implication: prefix caching is safe for serving, but any test that asserts
 bitwise reproducibility must pin the cache state (or disable caching).
+
+## 2026-11-09 Author email fix
+
+The pod's git user.email had two stray bytes in front of the address, so
+most commits were not linked to my GitHub account. I rewrote history to fix
+the author email; file contents are unchanged. The git_commit values in
+results/*/env.json refer to the pre-rewrite hashes.

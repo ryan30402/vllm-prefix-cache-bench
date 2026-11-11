@@ -1,0 +1,13 @@
+# Memory pressure with the v2 harness. Only gpu_memory_utilization differs
+# from matrix_clean_c128.yaml (0.50 instead of 0.90); max_model_len is unchanged.
+tag: clean_pressure
+model: Qwen/Qwen2.5-7B-Instruct
+repeats: 3
+order: paired_random
+order_seed: 5
+server_base: {max_model_len: 8192, gpu_memory_utilization: 0.50, max_num_seqs: 256, port: 8000}
+bench_base: {suffix_len: 256, output_len: 128, num_prompts: 500, warmup_prompts: 50, workload_seed: 0}
+sweep:
+  prefix_caching: [false, true]
+  prefix_len: [2048]
+  max_concurrency: [128]

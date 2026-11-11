@@ -8,42 +8,46 @@ time to first token (TTFT), time per output token (TPOT) and output throughput.
 
 ## Results
 
-Qwen2.5-7B-Instruct on one NVIDIA A40, vLLM 0.33.0. 150 runs of 500 requests,
+Qwen2.5-7B-Instruct on one NVIDIA A40, vLLM 0.33.0, 500 requests per run,
 medians of 3 repeats. Full analysis: [analysis/REPORT.md](analysis/REPORT.md).
 
 | Shared prefix / concurrency | Metric | Cache off | Cache on | Change |
 |---|---|---|---|---|
-| 2,048 tokens / 32 | Output throughput | 277 tok/s | 778 tok/s | 2.8x |
-| 2,048 tokens / 32 | p99 TTFT | 8.9 s | 1.2 s | −86% |
-| 2,048 tokens / 32 | p50 TTFT | 1,540 ms | 660 ms | −57% |
-| 4,096 tokens / 128 | Output throughput | 135 tok/s | 1,196 tok/s | 8.9x |
-| 4,096 tokens / 128 | p50 TTFT | 67.5 s | 1.7 s | −97% |
-| none / 32 | Output throughput | 837 tok/s | 855 tok/s | 1.02x |
+| 2,048 tokens / 32 | Output throughput | 271 tok/s | 756 tok/s | 2.8x |
+| 2,048 tokens / 32 | p50 end-to-end latency | 15.1 s | 5.3 s | −65% |
+| 2,048 tokens / 32 | p50 TTFT | 1,276 ms | 634 ms | −50% |
+| 4,096 tokens / 128 | Output throughput | 133 tok/s | 1,137 tok/s | 8.6x |
+| 4,096 tokens / 128 | p50 TTFT | 68.4 s | 1.8 s | −97% |
+| none / 32 | Output throughput | 832 tok/s | 832 tok/s | 1.00x |
 
-![Throughput gain from prefix caching](analysis/figures/fig4_throughput_gain_heatmap.png)
+These are the clean reference runs (42 runs, v2 harness). The figure shows the
+earlier 20-condition sweep (150 runs, v1 harness), whose gains are up to 4%
+higher because of a measurement flaw described in the report.
+
+![Throughput gain from prefix caching, v1 sweep](analysis/figures/fig4_throughput_gain_heatmap.png)
 
 What the data shows:
 
 - The gain grows with prefix length and concurrency. Under load, prefill is
   the bottleneck, and the cache removes most of it.
 - Decoding itself is not faster: TPOT is identical at concurrency 1. Under
-  load TPOT still drops (102.8 → 35.7 ms at prefix 2048, concurrency 32)
+  load TPOT still drops (105.9 → 36.9 ms at prefix 2048, concurrency 32)
   because other requests' prefill no longer delays decode steps.
 - With `gpu_memory_utilization` lowered from 0.9 to 0.5, the cache-off server
-  preempted requests at concurrency 128 and the cache-on server did not: a
-  shared prefix is stored once.
+  preempted requests at concurrency 128 and its median TTFT tripled. The
+  cache-on server was unaffected: a shared prefix is stored once.
 - Greedy outputs are reproducible within a cache state but differ between
   cache states, so exact-match tests must pin the cache state.
 
-Known limitations (a synthetic single-prefix workload, closed-loop load, and a
-warm-up overlap that makes 10% of measured requests full-prompt hits) are
-documented in the report.
+Known limitations (a synthetic single-prefix workload and closed-loop load
+that starts with a burst) are documented in the report.
 
-These numbers were produced by the first version of the harness (commit
-`1be108b`). A review of that version found measurement and reliability
-problems, listed in the report. The scripts in this repository are now the
-rewritten harness (v2); clean reference runs made with it will be reported
-next to the numbers above, not merged into them.
+A review of the first harness (commit `1be108b`) found measurement and
+reliability problems, including a warm-up overlap that made 10% of measured
+requests full-prompt cache hits. The harness was rewritten and the main
+conditions were measured again: the headline gain moved from 2.81x to 2.79x
+and the zero-prefix control from 1.02x to 1.00x. Both data sets are kept and
+reported side by side.
 
 ## How it works
 
@@ -70,6 +74,7 @@ therefore covers the measured requests only.
     python scripts/make_workload.py configs/matrix_clean24.yaml
     python scripts/run_matrix.py configs/matrix_clean24.yaml
     python analysis/load_results_v2.py results_v2 analysis/runs_v2.csv
+    python analysis/compare_v1_v2.py analysis/runs.csv analysis/runs_v2.csv
 
 ## Tests
 
@@ -88,6 +93,8 @@ missing metrics, failed requests and prompt generation.
 | `scripts/` | generate prompts, start/stop server, run benchmark, scrape metrics, run a sweep |
 | `tests/` | CPU-only tests and the fake `vllm` command |
 | `checks/` | greedy-output comparison across cache states |
-| `analysis/` | results loaders, plots, `runs.csv`, figures, report |
-| `results/` | v1 results, one folder per run |
+| `analysis/` | results loaders, plots, comparison, figures, report |
+| `results/` | v1 sweep, one folder per run |
+| `results_v2/` | clean reference runs, one folder per run and attempt |
+| `workloads/` | manifests (checksums) of the generated prompt files |
 | `notes.md` | lab notes, including bugs found along the way |

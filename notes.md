@@ -133,3 +133,30 @@ with gpu_memory_utilization. A rerun should change one thing.
 All of this is covered by tests that run on a CPU against tests/fake_vllm.py.
 Three of the old behaviours were put back on a scratch copy to confirm that
 the tests fail when they should.
+
+## 2026-11-11 Clean reference runs with the v2 harness
+
+42 runs on a second A40 (same driver and software versions), all valid on the
+first attempt: prefix 0/2048 x concurrency 1/32, prefix 2048/4096 at
+concurrency 128, and memory pressure at prefix 2048, concurrency 128.
+
+- The checks held on real vLLM: hit rate exactly 0.888889 (2048/2304) and
+  0.941176 (4096/4352) with a shared prefix and the cache on, exactly 0
+  otherwise; 500 requests and the exact prompt-token count in every run.
+- Throughput gain, v1 -> v2: 1.02x -> 1.00x at prefix 0 / concurrency 32,
+  2.81x -> 2.79x at 2048/32, 5.75x -> 5.52x at 2048/128, 8.89x -> 8.57x at
+  4096/128. The v1 numbers were high by up to 4.4%; no conclusion changed.
+- Cache-off throughput differs by up to 1.9% between the two machines even
+  though the overlap cannot affect it. Lesson: take gains from paired runs on
+  one machine, and do not read 1-2% differences across machines.
+- Per-request data showed what the TTFT tail is. At 2048/32 with the cache
+  off, the 9 s p99 is the first 32 requests arriving together (median 5.6 s,
+  max 10.7 s); later requests sit at 1.28 s with a p99 of 1.59 s. The report
+  had been describing that p99 as tail latency under load. It is the start-up
+  burst.
+- Memory pressure with only gpu_memory_utilization changed (0.9 -> 0.5):
+  cache off gets 18 preemptions and median TTFT goes from 11.0 s to 35.6 s;
+  cache on is unchanged (1,391 tok/s both ways). The 1.5% loss v1 showed for
+  cache on was not real.
+- Decision: no full rerun. The flaw's effect is measured, small and in the
+  predicted direction; the other 14 conditions stay as v1 with that caveat.

@@ -1,5 +1,7 @@
 # vLLM Prefix Caching Benchmark Harness
 
+![tests](https://github.com/ryan30402/vllm-prefix-cache-bench/actions/workflows/tests.yml/badge.svg)
+
 A reproducible benchmark of vLLM prefix caching: the same model served with
 the cache on and off, across shared-prefix length and concurrency, measuring
 time to first token (TTFT), time per output token (TPOT) and output throughput.
@@ -37,25 +39,55 @@ Known limitations (a synthetic single-prefix workload, closed-loop load, and a
 warm-up overlap that makes 10% of measured requests full-prompt hits) are
 documented in the report.
 
+These numbers were produced by the first version of the harness (commit
+`1be108b`). A review of that version found measurement and reliability
+problems, listed in the report. The scripts in this repository are now the
+rewritten harness (v2); clean reference runs made with it will be reported
+next to the numbers above, not merged into them.
+
 ## How it works
 
-Each run starts a fresh server, sends 50 warm-up requests, then 500 measured
-requests with `vllm bench serve`, and scrapes Prometheus counters before and
-after to get the cache hit rate and preemption count. `run_matrix.py` expands
-a sweep config into runs and skips runs that already completed.
+Each run starts a fresh server in its own process group, checks that the
+server answering on the port is the one it started, sends warm-up requests,
+reads the Prometheus counters, sends the measured requests with
+`vllm bench serve`, and reads the counters again. The counter difference
+therefore covers the measured requests only.
+
+- **Prompts.** `make_workload.py` writes the prompt files: every prompt has an
+  exact token count, all prompts share the same prefix tokens, and no measured
+  prompt repeats a warm-up prompt.
+- **Resume.** A run folder is named after a hash of its full config and
+  environment, each retry is kept as a separate attempt, and a run is skipped
+  only if its files and request counts check out.
+- **Failures.** A missing metric, a counter that went down, a failed request
+  or a server that died is an error. The sweep exits non-zero unless every run
+  has a valid result.
+- **Provenance.** Each run records the model revision, `pip freeze`, the
+  server's start-up settings and the source commit, and the sweep refuses to
+  start if the scripts differ from the last commit.
 
     pip install -r requirements.txt
-    python scripts/run_matrix.py configs/matrix_main.yaml
-    python analysis/load_results.py results analysis/runs.csv
-    python analysis/plots.py analysis/runs.csv analysis/figures
+    python scripts/make_workload.py configs/matrix_clean24.yaml
+    python scripts/run_matrix.py configs/matrix_clean24.yaml
+    python analysis/load_results_v2.py results_v2 analysis/runs_v2.csv
+
+## Tests
+
+The harness is tested without a GPU against a stand-in for the `vllm` command
+(`tests/fake_vllm.py`): process cleanup, changed settings, missing files,
+missing metrics, failed requests and prompt generation.
+
+    pip install -r requirements-dev.txt
+    pytest -q
 
 ## Layout
 
 | Path | Contents |
 |---|---|
-| `configs/` | sweep definitions: main, block-boundary, memory-pressure |
-| `scripts/` | start/stop server, run benchmark, scrape metrics, run a sweep |
+| `configs/` | sweep definitions |
+| `scripts/` | generate prompts, start/stop server, run benchmark, scrape metrics, run a sweep |
+| `tests/` | CPU-only tests and the fake `vllm` command |
 | `checks/` | greedy-output comparison across cache states |
-| `analysis/` | results loader, plots, `runs.csv`, figures, report |
-| `results/` | one folder per run: config, environment, benchmark output, metrics |
+| `analysis/` | results loaders, plots, `runs.csv`, figures, report |
+| `results/` | v1 results, one folder per run |
 | `notes.md` | lab notes, including bugs found along the way |

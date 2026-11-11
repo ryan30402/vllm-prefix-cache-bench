@@ -1,0 +1,25 @@
+# Quick end-to-end check of the v2 harness on a real GPU before a long sweep:
+# 4 short runs, a few minutes in total.
+tag: smoke
+model: Qwen/Qwen2.5-7B-Instruct
+repeats: 1
+order: paired_random
+order_seed: 0
+
+server_base:
+  max_model_len: 8192
+  gpu_memory_utilization: 0.90
+  max_num_seqs: 256
+  port: 8000
+
+bench_base:
+  suffix_len: 256
+  output_len: 128
+  num_prompts: 40
+  warmup_prompts: 10
+  workload_seed: 0
+
+sweep:
+  prefix_caching: [false, true]
+  prefix_len: [0, 2048]
+  max_concurrency: [32]

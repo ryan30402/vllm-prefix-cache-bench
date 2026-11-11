@@ -1,0 +1,28 @@
+# 24 clean reference runs for the v2 harness:
+# prefix 0 / 2048  x  concurrency 1 / 32  x  cache off / on  x  3 repeats.
+# Cache off and on run back to back, in a random order within each pair.
+# order_seed 5 was chosen before running: cache off goes first in 6 of the 12
+# pairs, and in 1 or 2 of the 3 repeats of every (prefix, concurrency) cell.
+tag: clean
+model: Qwen/Qwen2.5-7B-Instruct
+repeats: 3
+order: paired_random
+order_seed: 5
+
+server_base:
+  max_model_len: 8192
+  gpu_memory_utilization: 0.90
+  max_num_seqs: 256
+  port: 8000
+
+bench_base:
+  suffix_len: 256
+  output_len: 128
+  num_prompts: 500
+  warmup_prompts: 50
+  workload_seed: 0
+
+sweep:
+  prefix_caching: [false, true]
+  prefix_len: [0, 2048]
+  max_concurrency: [1, 32]

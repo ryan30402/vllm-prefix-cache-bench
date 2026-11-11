@@ -2,6 +2,11 @@
 
 Measured November 2026 on one NVIDIA A40. All numbers are medians of 3 repeats.
 
+> These are the v1 results. The problems listed under Limitations led to a
+> rewritten harness (v2, see the README). Clean reference runs made with it
+> will be reported in a separate section and will not be merged into these
+> numbers.
+
 ## Summary
 
 - With a 2,048-token shared prefix and 32 concurrent requests, prefix caching
@@ -66,6 +71,16 @@ Milliseconds, cache off → cache on.
 | 32 | 1,540 → 660 | 8,929 → 1,215 | 102.8 → 35.7 |
 | 128 | 10,838 → 1,438 | 51,486 → 5,103 | 385.5 → 72.5 |
 
+End-to-end latency in milliseconds (request sent to last token), cache off →
+cache on. It does not include the wait in the client-side concurrency queue.
+
+| Concurrency | p50 E2E | p99 E2E |
+|---|---|---|
+| 1 | 3,934 → 3,668 | 3,954 → 3,684 |
+| 8 | 6,259 → 4,095 | 6,527 → 4,161 |
+| 32 | 14,737 → 5,180 | 22,266 → 5,486 |
+| 128 | 65,779 → 10,956 | 106,563 → 14,699 |
+
 ![TTFT vs prefix length](figures/fig1_ttft_vs_prefix.png)
 
 ### Why the gain depends on concurrency
@@ -108,7 +123,8 @@ to show it.
 
 ### Memory pressure
 
-`gpu_memory_utilization` 0.5 instead of 0.9, prefix 2048 (`max_model_len` 16384).
+`gpu_memory_utilization` 0.5 instead of 0.9, prefix 2048. These runs also used
+`max_model_len` 16384 instead of 8192 (see Limitations).
 
 | Concurrency | Cache | p50 TTFT (ms) | p99 TTFT (ms) | TPOT (ms) | tok/s | tok/s at 0.9 | Preemptions |
 |---|---|---|---|---|---|---|---|
@@ -148,12 +164,13 @@ prefixes is needed to test that case.
 | cache off vs full-prompt hit | 19/50 |
 | prefix hit vs full-prompt hit | 21/50 |
 
-Outputs are deterministic for a given cache state and differ across cache
-states. The likely cause is small bf16 numeric differences between computing
-attention inputs and reading them from cached blocks, which flip near-tie
-argmax decisions. Divergent pairs I inspected were alternative phrasings of
-comparable quality. Any test that asserts exact reproducibility must pin the
-cache state.
+For these 50 prompts, outputs are deterministic for a given cache state and
+differ across cache states. A possible cause is small bf16 numeric differences
+between computing attention inputs and reading them from cached blocks, which
+could flip near-tie argmax decisions; I did not test this. I also did not
+measure output quality, so this check says nothing about whether the outputs
+of the two states are equally good. Any test that asserts exact
+reproducibility must pin the cache state.
 
 ## Measurement noise
 
@@ -174,19 +191,37 @@ throughput, TPOT and p99 TTFT.
 
 ## Limitations
 
-- **Warm-up overlap.** Warm-up and measurement both use `--seed 0`, so the
-  first 50 of the 500 measured prompts repeat the warm-up prompts and are
-  full-prompt cache hits. The counters confirm it: prefix-0 runs record
-  exactly 12,000 hit tokens (50 requests x 240). Cache-on numbers therefore
-  include 10% full-hit requests, the measured hit rate at prefix 2048 is 0.897
-  instead of 0.889, and the prefix-0 row (1.00x to 1.04x) is not a pure
-  overhead control. Fix: give the warm-up a different seed.
+- **Warm-up overlap.** Warm-up and measurement both use `--seed 0`, so 50 of
+  the 500 measured prompts (shuffled among the rest) repeat the warm-up
+  prompts and are full-prompt cache hits. The counters confirm it: prefix-0
+  runs record exactly 12,000 hit tokens (50 requests x 240). Cache-on numbers
+  therefore include 10% full-hit requests, the measured hit rate at prefix
+  2048 is 0.897 instead of 0.889, and the prefix-0 row (1.00x to 1.04x) is not
+  a pure overhead control. Changing only the warm-up seed would not fix it:
+  the shared prefix is generated from the same seed and would change too.
+- **Counters include the warm-up.** They were read before the warm-up, so the
+  hit rate and preemption counts cover 550 requests, not the 500 measured.
 - **Best-case workload.** One shared prefix, random-token suffixes and
   fixed-length outputs. Real traffic has many prefixes and variable lengths.
 - **Closed loop.** A fixed number of in-flight requests, not open-loop
   arrivals, so latency under overload reflects the client as well.
-- **Aggregates only.** Default `vllm bench serve` output: p99 is the per-run
-  p99, then the median of 3 runs. No p95 and no end-to-end latency.
+- **Aggregates only for TTFT and TPOT.** They come from the default
+  `vllm bench serve` output: p99 is the per-run p99, then the median of 3
+  runs, and there is no p95. End-to-end latency is computed from the
+  per-request `latencies` field.
+- **The memory-pressure runs change two settings.** They lower
+  `gpu_memory_utilization` and also raise `max_model_len`, so the comparison
+  with the main sweep is not a single-variable change.
+- **Provenance.** Every `env.json` says `git_dirty: true`, because the growing
+  `results/` folder counted as a change, and the recorded commit hashes
+  predate a history rewrite (see `notes.md`). A run cannot be tied to an
+  exact source state.
+- **Harness.** The v1 runner stopped servers with a machine-wide `pkill`,
+  read a missing counter as zero, and decided whether to skip a run from its
+  name alone. I found no sign that this affected the committed results (the
+  machine had one tenant, all seven counters are present in all 300 metric
+  snapshots, and the name collisions that did happen were found and re-run),
+  but nothing guarded against it.
 - **Scope.** One model, one GPU, one vLLM version, 3 repeats.
 
 ## Reproduce
@@ -199,3 +234,6 @@ throughput, TPOT and p99 TTFT.
     python analysis/plots.py analysis/runs.csv analysis/figures
 
 The main sweep took about 24 hours on one A40. Runs are resumable.
+
+These commands are for the v1 harness that produced the numbers above
+(commit `1be108b`). The current scripts are the v2 harness; see the README.

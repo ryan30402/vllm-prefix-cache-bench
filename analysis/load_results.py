@@ -5,6 +5,9 @@ Usage:
 
 Works with the default vllm bench serve output (aggregate fields only) and
 with --save-detailed output (per-request ttfts), whichever is present.
+
+This is the loader for the v1 results in results/. Runs made with the v2
+harness (results_v2/) are read by load_results_v2.py.
 """
 
 import json
@@ -67,8 +70,15 @@ def load_run(run_dir: Path) -> dict | None:
         tpot_mean_ms=bench.get("mean_tpot_ms"),
         tpot_p50_ms=bench.get("median_tpot_ms"),
         tpot_p99_ms=bench.get("p99_tpot_ms"),
-        e2e_p50_ms=bench.get("median_e2el_ms"),
-        e2e_p99_ms=bench.get("p99_e2el_ms"),
+    )
+    # vLLM saves every request's latency (send to last token, in seconds) even
+    # without --save-detailed, so end-to-end percentiles can be computed here.
+    # The wait in the client-side concurrency queue is not part of it.
+    e2e_ms = [t * 1000 for t in bench.get("latencies") or []]
+    row.update(
+        e2e_p50_ms=pct(e2e_ms, 50),
+        e2e_p95_ms=pct(e2e_ms, 95),
+        e2e_p99_ms=pct(e2e_ms, 99),
     )
     return row
 

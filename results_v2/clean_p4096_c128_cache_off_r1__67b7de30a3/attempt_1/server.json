@@ -1,0 +1,23 @@
+{
+  "pid": 26407,
+  "pgid": 26407,
+  "proc_start_time": "58959537",
+  "port": 8000,
+  "cmd": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen2.5-7B-Instruct",
+    "--max-model-len",
+    "8192",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--max-num-seqs",
+    "256",
+    "--port",
+    "8000",
+    "--revision",
+    "a09a35458c702b33eeacc393d103063234e8bc28",
+    "--no-enable-prefix-caching"
+  ],
+  "started_at": "2026-11-11T17:44:39.431516+00:00"
+}

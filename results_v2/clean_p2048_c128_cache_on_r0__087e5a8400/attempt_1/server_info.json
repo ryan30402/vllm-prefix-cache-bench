@@ -1,0 +1,49 @@
+{
+  "pid": 23343,
+  "pgid": 23343,
+  "proc_start_time": "58859102",
+  "port": 8000,
+  "cmd": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen2.5-7B-Instruct",
+    "--max-model-len",
+    "8192",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--max-num-seqs",
+    "256",
+    "--port",
+    "8000",
+    "--revision",
+    "a09a35458c702b33eeacc393d103063234e8bc28"
+  ],
+  "started_at": "2026-11-11T17:27:55.079398+00:00",
+  "model_card": {
+    "id": "Qwen/Qwen2.5-7B-Instruct",
+    "object": "model",
+    "created": 1794418124,
+    "owned_by": "vllm",
+    "root": "Qwen/Qwen2.5-7B-Instruct",
+    "parent": null,
+    "max_model_len": 8192,
+    "permission": [
+      {
+        "id": "modelperm-9d2c49a7a5061423",
+        "object": "model_permission",
+        "created": 1794418124,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "non_default_args": "{'model_tag': 'Qwen/Qwen2.5-7B-Instruct', 'model': 'Qwen/Qwen2.5-7B-Instruct', 'revision': 'a09a35458c702b33eeacc393d103063234e8bc28', 'max_model_len': 8192, 'gpu_memory_utilization': 0.9, 'max_num_seqs': 256}",
+  "kv_cache_size_tokens": 459936
+}

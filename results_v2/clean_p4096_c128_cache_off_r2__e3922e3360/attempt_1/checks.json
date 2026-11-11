@@ -1,0 +1,10 @@
+{
+  "fresh_request_success": 0.0,
+  "request_success_delta": 500.0,
+  "prompt_tokens_delta": 2176000.0,
+  "prompt_tokens_expected": 2176000,
+  "client_input_tokens": 2176000,
+  "cache_hit_rate": 0.0,
+  "cache_hit_rate_expected": 0.0,
+  "preemptions": 0.0
+}

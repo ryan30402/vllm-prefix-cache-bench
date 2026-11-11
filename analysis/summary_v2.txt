@@ -1,4 +1,4 @@
-24 valid runs -> analysis/runs_v2.csv
+42 valid runs -> analysis/runs_v2.csv
                               ttft_p50_ms  ttft_p99_ms  tpot_mean_ms  output_tok_per_s  cache_hit_rate  preemptions
 prefix_len concurrency cache                                                                                       
 0          1           off         56.864       67.252        28.123            35.270           0.000          0.0
@@ -9,3 +9,7 @@ prefix_len concurrency cache
                        on          77.981      106.678        28.262            34.893           0.889          0.0
            32          off       1276.174     9044.453       105.897           271.231           0.000          0.0
                        on         634.180     1255.893        36.921           756.274           0.889          0.0
+           128         off      23275.362    53153.720       283.984           261.269           0.000          9.0
+                       on        1454.564     5636.909        77.081          1390.987           0.889          0.0
+4096       128         off      68408.022   108460.670       419.678           132.733           0.000          0.0
+                       on        1750.015     6616.254        95.711          1136.867           0.941          0.0

@@ -1,0 +1,19 @@
+bench:
+  max_concurrency: 128
+  num_prompts: 500
+  output_len: 128
+  prefix_len: 4096
+  suffix_len: 256
+  warmup_prompts: 50
+  workload_seed: 0
+model: Qwen/Qwen2.5-7B-Instruct
+name: clean_p4096_c128_cache_off_r2
+repeat: 2
+revision: a09a35458c702b33eeacc393d103063234e8bc28
+server:
+  gpu_memory_utilization: 0.9
+  max_model_len: 8192
+  max_num_seqs: 256
+  port: 8000
+  prefix_caching: false
+tag: clean

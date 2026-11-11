@@ -1,0 +1,18 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "prefix_len": 0,
+  "suffix_len": 256,
+  "output_len": 128,
+  "warmup_prompts": 50,
+  "num_prompts": 500,
+  "seed": 0,
+  "prompt_tokens_each": 256,
+  "prefix_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "warmup_sha256": "49becba567fb05520f2086bc99a1f91ebd80409f475c03a74176ab3d3582761b",
+  "main_sha256": "b557c178f1b4bbfa80e9a33a911cfb0909f53b7b256d05c3656ce416ccb778bf",
+  "tokenizer": {
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "vocab_size": 151643
+  }
+}

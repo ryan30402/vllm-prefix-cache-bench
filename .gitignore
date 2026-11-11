@@ -5,3 +5,6 @@ venv*/
 *.log
 results/*/server.log
 .env
+.pytest_cache/
+# Generated prompt files are large and reproducible; their manifests are kept.
+workloads/*/*.jsonl

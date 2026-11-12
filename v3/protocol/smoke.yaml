@@ -1,0 +1,42 @@
+# v3 smoke test: 4 short runs (about 10 minutes) to check the whole pipeline on
+# real vLLM before spending hours. Not a measurement; never reported.
+name: smoke
+batch: 1
+rounds: 1
+order_seed: 2999
+model: Qwen/Qwen2.5-7B-Instruct
+model_revision: a09a35458c702b33eeacc393d103063234e8bc28
+
+server:
+  port: 8000
+  max_model_len: 8192
+  gpu_memory_utilization: 0.90
+  max_num_seqs: 256
+  max_num_batched_tokens: 2048   # vLLM's own default on this GPU class, pinned
+  generation_config: vllm        # neutral sampling defaults, not the model's file
+  seed: 0
+
+bench:
+  temperature: 0.0               # greedy decoding
+  timeout_s: 7200
+  warmup_timeout_s: 1800
+
+telemetry:
+  required: true
+  interval_s: 2
+
+validity:
+  max_pair_attempts: 3           # failed attempts per pair before it is reported as unmeasured
+
+workload:
+  suffix_len: 256
+  output_len: 128
+  num_prompts: 20
+  warmup_prompts: 5
+  seed: 0
+  block_size: 16
+
+conditions:
+  list:
+    - {prefix_len: 0, concurrency: 4}
+    - {prefix_len: 2040, concurrency: 4}

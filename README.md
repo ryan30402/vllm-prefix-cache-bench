@@ -6,7 +6,15 @@ A reproducible benchmark of vLLM prefix caching: the same model served with
 the cache on and off, across shared-prefix length and concurrency, measuring
 time to first token (TTFT), time per output token (TPOT) and output throughput.
 
-## Results
+## Status
+
+A full re-measurement under one written protocol (v3) is being prepared: new
+harness, new data, nothing reused from the runs below. The harness and its CPU
+tests are done; no v3 GPU run exists yet. See [v3/README.md](v3/README.md) and
+[v3/PROTOCOL.md](v3/PROTOCOL.md). Everything below is the v1 and v2 work, kept
+unchanged.
+
+## Results (v1 and v2)
 
 Qwen2.5-7B-Instruct on one NVIDIA A40, vLLM 0.33.0, 500 requests per run,
 medians of 3 repeats. Full analysis: [analysis/REPORT.md](analysis/REPORT.md).
@@ -98,3 +106,5 @@ missing metrics, failed requests and prompt generation.
 | `results_v2/` | clean reference runs, one folder per run and attempt |
 | `workloads/` | manifests (checksums) of the generated prompt files |
 | `notes.md` | lab notes, including bugs found along the way |
+| `v3/` | v3 harness, protocol, specs and tests (independent of the paths above) |
+| `results_v3/` | v3 data (empty until the first GPU run) |

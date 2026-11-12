@@ -46,3 +46,21 @@ Design choices:
 Not done yet: any GPU run. Output-reproducibility diagnostic, figures and the
 report follow once there is data. The rule for adding rounds will be written
 here after the pilot and before `main` is frozen.
+
+## 2026-11-12 Telemetry sampling changed before the first GPU run
+
+First version: one long-lived `nvidia-smi -lms` process writing CSV to a file.
+Problem found by reading my own code, not by a failure: whether that process
+flushes each line when its output is a file is not something I can check
+without a GPU, and it is stopped with SIGTERM. If it buffers, a short run ends
+with an empty file and fails the "telemetry was recorded" rule for a reason
+that has nothing to do with the measurement.
+
+Now: the sampling thread runs one short `nvidia-smi` query per sample and
+stamps it with the harness clock. No dependence on buffering or on the
+timestamp format of the tool; the first sample is taken immediately. Cost: one
+process start every 2 s, the same for cache on and off.
+
+Also hardened: the summary numbers of `vllm bench serve` are stored for
+reference; a non-finite value anywhere in them is now written as null instead
+of breaking the JSON file.

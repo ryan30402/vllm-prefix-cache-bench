@@ -550,3 +550,67 @@ def test_a_terminated_runner_cleans_up_before_it_exits(tmp_path, sig):
     assert store.read_state(d)["state"] == "INTERRUPTED"
     assert not (exp / "runner.lock").exists()
     assert len(attempts(exp)) == 1  # it stopped; it did not go on to the next run
+
+
+def test_gpu_samples_are_stamped_by_the_harness_and_survive_a_dead_server(tmp_path):
+    from pcbench.metrics import Telemetry
+    from v3_helpers import SMI_FIELDS, free_port
+
+    tel = Telemetry(tmp_path, free_port(), 0.1, SMI_FIELDS)
+    before = time.time()
+    tel.start()
+    tel.mark("main_start")
+    time.sleep(0.5)
+    tel.mark("main_end")
+    summary = tel.stop()
+    # nothing listens on the port: server samples fail, GPU samples do not
+    assert summary["server_samples_total"] == 0 and summary["server_scrape_errors"] >= 1
+    assert summary["gpu_samples_total"] >= 2 and summary["gpu_query_errors"] == 0
+    assert summary["gpu_samples_in_main"] >= 1
+    assert (
+        summary["gpu_temperature_c_max"] == 55 and summary["gpu_power_w_mean"] == 210.5
+    )
+    rows = rows_of(tmp_path / "gpu_telemetry.csv")
+    assert len(rows) == summary["gpu_samples_total"]
+    assert before - 0.01 <= float(rows[0]["t"]) <= time.time()
+    assert rows[0]["uuid"] == "GPU-fake-0000" and rows[0]["temperature.gpu"] == "55"
+
+
+def test_a_single_sample_is_taken_even_if_stopped_at_once(tmp_path):
+    from pcbench.metrics import Telemetry
+    from v3_helpers import SMI_FIELDS, free_port
+
+    tel = Telemetry(tmp_path, free_port(), 60, SMI_FIELDS)
+    tel.start()
+    assert tel.stop()["gpu_samples_total"] == 1
+
+
+def test_failing_gpu_queries_fail_a_run_that_requires_telemetry(tmp_path, monkeypatch):
+    monkeypatch.setenv("FAKE_SMI_BAD_FIELD", "temperature.gpu")
+    exp, code = freeze_and_run(tmp_path, validity={"max_pair_attempts": 1})
+    assert code == 1
+    d = attempts(exp)[0]
+    assert "no GPU telemetry" in store.read_state(d)["error"]
+    assert store.read_json(d / "telemetry.json")["gpu_query_errors"] >= 1
+
+
+def test_tool_summary_numbers_never_break_the_json(tmp_path):
+    from pcbench.bench import aggregates
+
+    raw = {
+        "duration": 1.5,
+        "rtfx": float("inf"),
+        "nested": {"p99": float("nan"), "ok": [1, float("inf")]},
+        "ttfts": [0.1],
+        "request_rate": "inf",
+        "label": None,
+    }
+    agg = aggregates(raw)
+    assert agg == {
+        "duration": 1.5,
+        "rtfx": None,
+        "nested": {"p99": None, "ok": [1, None]},
+        "request_rate": "inf",
+        "label": None,
+    }
+    store.atomic_write_json(tmp_path / "a.json", agg)

@@ -172,20 +172,26 @@ def to_rows(raw: dict, num_prompts: int, what: str) -> list[dict]:
     return rows
 
 
+def _finite(value):
+    """Replace non-finite numbers by null, at any depth."""
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {str(k): _finite(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_finite(v) for v in value]
+    return value
+
+
 def aggregates(raw: dict) -> dict:
     """The tool's own summary numbers (everything that is not a per-request list).
 
     Kept for reference only: the harness recomputes its metrics from the rows.
     A non-finite number is stored as null.
     """
-    out = {}
-    for key, value in raw.items():
-        if isinstance(value, list):
-            continue
-        if isinstance(value, float) and not math.isfinite(value):
-            value = None
-        out[key] = value
-    return out
+    return {
+        key: _finite(value) for key, value in raw.items() if not isinstance(value, list)
+    }
 
 
 def run_bench(

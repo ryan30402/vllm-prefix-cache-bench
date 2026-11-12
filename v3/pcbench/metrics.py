@@ -13,7 +13,6 @@ import re
 import subprocess
 import threading
 import time
-from datetime import datetime
 from pathlib import Path
 
 import requests
@@ -107,9 +106,12 @@ def _numbers(rows: list[dict], key: str) -> list[float]:
 class Telemetry:
     """Sample server gauges and GPU state while an attempt runs.
 
-    The server is sampled by a thread that reads /metrics every interval_s
-    seconds. The GPU is sampled by one long-lived nvidia-smi process writing CSV.
-    Neither is part of the timed path; both run the same way for cache on and off.
+    One thread takes a sample every interval_s seconds: it reads /metrics and
+    runs one short `nvidia-smi` query. Each sample is stamped with this
+    process's clock, so the timestamps do not depend on how nvidia-smi formats
+    or buffers its output. The first sample is taken immediately, so even a
+    very short run has one. Sampling is not part of the timed path and runs
+    the same way for cache on and off.
     """
 
     def __init__(
@@ -120,46 +122,60 @@ class Telemetry:
         self.interval_s = interval_s
         self.gpu_fields = gpu_fields
         self.rows: list[dict] = []
+        self.gpu: list[dict] = []
         self.marks: dict[str, float] = {}
         self.scrape_errors = 0
+        self.gpu_errors = 0
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
-        self._smi: subprocess.Popen | None = None
-        self._smi_out = None
 
     def mark(self, name: str) -> None:
         self.marks[name] = time.time()
 
-    def _loop(self) -> None:
-        while not self._stop.is_set():
-            t = time.time()
-            try:
-                parsed = parse(fetch(self.port, timeout=5))
-                self.rows.append(
-                    {"t": round(t, 3), **{k: parsed.get(k) for k in WANTED}}
+    def _sample_server(self, t: float) -> None:
+        try:
+            parsed = parse(fetch(self.port, timeout=5))
+        except requests.RequestException:
+            self.scrape_errors += 1
+            return
+        self.rows.append({"t": round(t, 3), **{k: parsed.get(k) for k in WANTED}})
+
+    def _sample_gpu(self, t: float) -> None:
+        try:
+            done = subprocess.run(
+                [
+                    "nvidia-smi",
+                    "--query-gpu=" + ",".join(self.gpu_fields),
+                    "--format=csv,noheader,nounits",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+        except (OSError, subprocess.SubprocessError):
+            self.gpu_errors += 1
+            return
+        if done.returncode != 0:
+            self.gpu_errors += 1
+            return
+        for line in done.stdout.splitlines():  # one line per GPU
+            values = [v.strip() for v in line.split(",")]
+            if len(values) == len(self.gpu_fields):
+                self.gpu.append(
+                    {"t": round(t, 3), **dict(zip(self.gpu_fields, values))}
                 )
-            except requests.RequestException:
-                self.scrape_errors += 1
-            self._stop.wait(max(0.0, self.interval_s - (time.time() - t)))
+
+    def _loop(self) -> None:
+        while True:
+            t = time.time()
+            self._sample_server(t)
+            if self.gpu_fields:
+                self._sample_gpu(t)
+            if self._stop.wait(max(0.0, self.interval_s - (time.time() - t))):
+                return
 
     def start(self) -> None:
         self.mark("telemetry_start")
-        if self.gpu_fields:
-            self._smi_out = open(self.dir / "gpu_telemetry.csv", "wb")
-            try:
-                self._smi = subprocess.Popen(
-                    [
-                        "nvidia-smi",
-                        "--query-gpu=" + ",".join(self.gpu_fields),
-                        "--format=csv,nounits",
-                        "-lms",
-                        str(int(self.interval_s * 1000)),
-                    ],
-                    stdout=self._smi_out,
-                    stderr=subprocess.DEVNULL,
-                )
-            except OSError:
-                self._smi = None
         self._thread = threading.Thread(target=self._loop, daemon=True)
         self._thread.start()
 
@@ -168,60 +184,27 @@ class Telemetry:
         self.mark("telemetry_stop")
         self._stop.set()
         if self._thread is not None:
-            self._thread.join(timeout=15)
-        if self._smi is not None:
-            self._smi.terminate()
-            try:
-                self._smi.wait(timeout=10)
-            except subprocess.TimeoutExpired:
-                self._smi.kill()
-                self._smi.wait()
-        if self._smi_out is not None:
-            self._smi_out.close()
-        buf = io.StringIO()
-        writer = csv.DictWriter(buf, fieldnames=["t", *WANTED])
-        writer.writeheader()
-        writer.writerows(self.rows)
-        atomic_write_text(self.dir / "server_timeseries.csv", buf.getvalue())
+            self._thread.join(timeout=30)
+        self._write_csv("server_timeseries.csv", ["t", *WANTED], self.rows)
+        if self.gpu_fields:
+            self._write_csv("gpu_telemetry.csv", ["t", *self.gpu_fields], self.gpu)
         return self.summary()
 
-    def gpu_rows(self) -> list[dict]:
-        path = self.dir / "gpu_telemetry.csv"
-        if not path.is_file():
-            return []
-        rows = []
-        with open(path, newline="") as f:
-            for row in csv.DictReader(f, skipinitialspace=True):
-                # Column titles look like "temperature.gpu" or "power.draw [W]".
-                clean = {
-                    k.split(" [")[0].strip(): (v or "").strip()
-                    for k, v in row.items()
-                    if k
-                }
-                try:
-                    stamp = datetime.strptime(
-                        clean["timestamp"], "%Y/%m/%d %H:%M:%S.%f"
-                    )
-                    clean["t"] = stamp.timestamp()
-                except (KeyError, ValueError):
-                    clean["t"] = None
-                rows.append(clean)
-        return rows
+    def _write_csv(self, name: str, fields: list[str], rows: list[dict]) -> None:
+        buf = io.StringIO()
+        writer = csv.DictWriter(buf, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(list(rows))
+        atomic_write_text(self.dir / name, buf.getvalue())
 
     def summary(self) -> dict:
         lo, hi = self.marks.get("main_start"), self.marks.get("main_end")
 
         def in_window(row: dict) -> bool:
-            return (
-                lo is not None
-                and hi is not None
-                and row.get("t")
-                and lo <= row["t"] <= hi
-            )
+            return lo is not None and hi is not None and lo <= row["t"] <= hi
 
         server = [r for r in self.rows if in_window(r)]
-        gpu_all = self.gpu_rows()
-        gpu = [r for r in gpu_all if in_window(r)]
+        gpu = [r for r in self.gpu if in_window(r)]
         running = _numbers(server, "num_requests_running")
         waiting = _numbers(server, "num_requests_waiting")
         kv = _numbers(server, "kv_cache_usage_perc")
@@ -236,9 +219,10 @@ class Telemetry:
             "server_samples_total": len(self.rows),
             "server_samples_in_main": len(server),
             "server_scrape_errors": self.scrape_errors,
-            "gpu_samples_total": len(gpu_all),
+            "gpu_samples_total": len(self.gpu),
             "gpu_samples_in_main": len(gpu),
-            "gpu_uuids": sorted({r["uuid"] for r in gpu_all if r.get("uuid")}),
+            "gpu_query_errors": self.gpu_errors,
+            "gpu_uuids": sorted({r["uuid"] for r in self.gpu if r.get("uuid")}),
             "server_running_mean": _mean(running),
             "server_running_max": max(running) if running else None,
             "server_waiting_mean": _mean(waiting),

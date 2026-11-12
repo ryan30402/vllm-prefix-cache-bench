@@ -23,7 +23,7 @@ The measurement contract is in [PROTOCOL.md](PROTOCOL.md).
 | Stage | What | State |
 |---|---|---|
 | 0 | Audit of the v2 code against the v3 plan | done, see "What changed" below |
-| 1 | Harness hardening, CPU tests, failure injection | done: 121 tests |
+| 1 | Harness hardening, CPU tests, failure injection | done: 125 tests |
 | 2 | Protocol and experiment specs | written; frozen on the GPU machine |
 | 3 | GPU smoke test and pilot | not run |
 | 4 | Main matrix, 120 runs | not run |
@@ -88,7 +88,7 @@ that group is stopped; a port in use is refused; retries get new folders.
 | Sampling was not pinned. `vllm bench serve` sends no temperature unless told to, and the server then takes its defaults from the model's `generation_config.json` (which for this model enables sampling). | `--generation-config vllm` and `--temperature 0`. | checked in `test_full_path_and_contract_numbers` |
 | Output length was assumed from `max_tokens`. | Every request must report exactly 128 generated tokens, and the server's `generation_tokens` counter must agree. | `test_a_failing_run_is_recorded_and_never_counted[output shorter than agreed]` |
 | Cache hits were recorded, not checked. | Exact expected hit tokens per run, including 0 at prefix 0. | `test_full_path_and_contract_numbers` |
-| No telemetry. | GPU (UUID, temperature, power, utilisation, memory) and server gauges (running, waiting, KV usage) sampled every 2 s. | `test_missing_gpu_telemetry_fails_a_run_that_requires_it` |
+| No telemetry. | GPU (UUID, temperature, power, utilisation, memory) and server gauges (running, waiting, KV usage) sampled every 2 s and stamped with the harness clock. | `test_gpu_samples_are_stamped_by_the_harness_and_survive_a_dead_server`, `test_failing_gpu_queries_fail_a_run_that_requires_telemetry` |
 | In-flight requests were taken from the tool's `max_concurrent_requests`, which reported 64 at concurrency 32. | Computed from request start and end times. | `test_in_flight_count_handles_slots_handed_over_at_the_same_instant` |
 | Pairs were randomized, but a failed run was retried alone, which broke the pair. | The pair is the unit: both runs are repeated together. | `test_a_transient_failure_is_retried_as_a_whole_pair` |
 | Order: one shuffle per repeat, off/on order unbalanced. | Randomized blocks with balanced first-mode assignment, fixed by a seed in the spec. | `test_which_cache_mode_goes_first_is_balanced` |
@@ -97,7 +97,7 @@ that group is stopped; a port in use is refused; retries get new folders.
 ## Tests
 
     pip install -r requirements-dev.txt
-    pytest -q v3/tests          # 121 tests, about 70 s, no GPU
+    pytest -q v3/tests          # 125 tests, about 70 s, no GPU
 
 They exercise the real code path (start, warm-up, measure, save, resume,
 analyze) against `tests/fake_vllm3.py`, a small HTTP server with a 16-token

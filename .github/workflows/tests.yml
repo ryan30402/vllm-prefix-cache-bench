@@ -16,6 +16,6 @@ jobs:
       - name: Install test dependencies
         run: pip install -r requirements-dev.txt
       - name: Check formatting
-        run: ruff format --check scripts analysis checks tests
-      - name: Run tests (no GPU needed, uses tests/fake_vllm.py)
+        run: ruff format --check scripts analysis checks tests v3
+      - name: Run tests (no GPU needed, uses fake vllm commands)
         run: pytest -q

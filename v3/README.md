@@ -5,8 +5,9 @@ v1 (`results/`) explored 20 conditions and had a warm-up flaw. v2
 side by side mixes two measurement methods. v3 measures everything again under
 one written protocol, with new data only.
 
-**Status: harness and protocol are written and tested on CPU. No GPU run has
-been made under v3 yet. There are no v3 results.**
+**Status: harness and protocol are tested on CPU and checked on real vLLM by a
+smoke test and a 20-run pilot. The main matrix has not been run; there are no
+v3 results to report yet.**
 
 Rules that hold from the start:
 
@@ -24,8 +25,8 @@ The measurement contract is in [PROTOCOL.md](PROTOCOL.md).
 |---|---|---|
 | 0 | Audit of the v2 code against the v3 plan | done, see "What changed" below |
 | 1 | Harness hardening, CPU tests, failure injection | done: 125 tests |
-| 2 | Protocol and experiment specs | written; frozen on the GPU machine |
-| 3 | GPU smoke test and pilot | not run |
+| 2 | Protocol and experiment specs | written; rule for more rounds fixed after the pilot |
+| 3 | GPU smoke test and pilot | done: 4 + 20 runs, all valid on the first attempt (`results_v3/smoke_b1`, `results_v3/pilot_b1`) |
 | 4 | Main matrix, 120 runs | not run |
 | 5 | Block-boundary and memory-pressure diagnostics, output-reproducibility check, figures, report | not run |
 | 6 | Optional: several prefixes, arrival rate, goodput under an SLO | not started |

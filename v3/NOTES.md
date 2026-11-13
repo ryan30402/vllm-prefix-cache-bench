@@ -64,3 +64,67 @@ process start every 2 s, the same for cache on and off.
 Also hardened: the summary numbers of `vllm bench serve` are stored for
 reference; a non-finite value anywhere in them is now written as null instead
 of breaking the JSON file.
+
+## 2026-11-13 Smoke test and pilot on the A40
+
+Smoke (4 runs) and pilot (20 runs) at commit `5f0c011`, one session, one GPU.
+All 24 runs valid on the first attempt. I re-validated every attempt from the
+pushed files and re-ran the analysis: `runs.csv`, `pairs.csv` and `summary.csv`
+come out byte-identical.
+
+Contract on real vLLM, pilot: 10,000 measured requests, 0 failed; every request
+128 output tokens; server counters match the client exactly; hit tokens exact
+in 20 of 20 runs (hit rate 0.8889 at prefix 2048, 0.9412 at 4096, 0.8850 at
+2040, 0 at prefix 0 and with the cache off); 0 preemptions; peak in-flight
+equals the configured concurrency. Prefix 2040 gave 2,032 reusable tokens per
+request, which confirms 16-token blocks on this machine.
+
+Pilot pair ratios (cache on / off, throughput), round 1 | round 2:
+
+| Condition | Round 1 | Round 2 |
+|---|---|---|
+| prefix 0, concurrency 32 | 0.9986 | 1.0001 |
+| prefix 2040, concurrency 32 | 2.7818 | 2.7785 |
+| prefix 2048, concurrency 1 | 1.0748 | 1.0747 |
+| prefix 2048, concurrency 128 | 5.6397 | 5.6257 |
+| prefix 4096, concurrency 128 | 8.7079 | 8.7249 |
+
+These are pilot numbers. They are not part of the main matrix and are not
+pooled with it.
+
+Run-to-run variation (same condition, same mode, round 1 vs round 2):
+throughput at most 0.25%, median 0.04%; TPOT p50 at most 2.6%; TTFT p99 at most
+6.6%; TTFT p50 at most 19% (prefix 2048, concurrency 128, cache on: 1,781 vs
+1,471 ms, while throughput differed by 0.25%). So throughput is very stable and
+TTFT p50 at high concurrency is not: in a closed loop the requests arrive in
+waves and the median moves with the wave pattern. The rule for more rounds in
+PROTOCOL.md was written from these numbers.
+
+Three things the pilot showed that I did not expect:
+
+- Outputs. With greedy decoding and identical prompts I compared the hash of
+  each of the 500 outputs between runs. Concurrency 1: 500 of 500 identical,
+  between rounds and between cache modes. Higher concurrency: not always
+  identical even within one mode (prefix 0, concurrency 32, cache off, round 1
+  vs round 2: 349 of 500), and about as different between modes (356 to 358).
+  So a difference between cache on and off cannot be blamed on the cache by
+  this comparison alone. The dedicated diagnostic (token ids, first diverging
+  position, logprob margin) is still to do.
+- GPU utilisation as reported by nvidia-smi: 76 to 86% with the cache off at
+  concurrency 128, 35 to 42% with the cache on. The cache-on runs are not
+  limited by the GPU there. Worth a look in the report, with the caveat that
+  this number is the share of time any kernel was running, not a load measure.
+- Time. The pilot took 5.3 h, not the 4 h I estimated. Per run about 385 s are
+  not measurement: about 225 s until the server is ready and about 75 s of
+  start-up for each of the two `vllm bench serve` passes (a 9 s warm-up pass
+  took 85 s of wall time). In v2 the same overhead was about 90 s per run,
+  estimated from its total run time. The
+  difference I can see is that the virtual environment was moved to
+  /workspace, a volume, and each process start imports thousands of files from
+  it. Not verified yet; the main matrix will run from a virtual environment on
+  the local disk with the same package versions, and the import time of both
+  is measured first. This does not touch the measurement: the clock starts
+  when a request is sent.
+
+Estimate for the rest, with the method that reproduces the pilot (5.25 h
+predicted, 5.28 h actual): main 35 h at 385 s overhead per run, 26 h at 110 s.

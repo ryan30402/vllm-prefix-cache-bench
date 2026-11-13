@@ -5,8 +5,9 @@ rules are code in `pcbench/schema.py` (`METRIC_DEFINITIONS`, `VALIDITY_RULES`)
 and are copied into every frozen `manifest.json`, so the text a result was
 measured under travels with the result.
 
-Status: the protocol is written and tested on CPU against a fake server. No GPU
-run has been made under it yet. Nothing in this file is a result.
+Status: tested on CPU against a fake server, then checked on real vLLM by the
+smoke test and the pilot (`results_v3/smoke_b1`, `results_v3/pilot_b1`). The main
+matrix has not been run. Nothing in this file is a result.
 
 ## Question
 
@@ -133,10 +134,28 @@ A request that fails or times out still has a record with its error text.
 - At most 3 failed attempts per pair. After that the pair is reported as
   unmeasured. A valid result is never re-measured to get a different number.
 
-Three rounds give three pairs per condition. That is enough for effects of
-tens of percent or more and not enough to resolve differences of about 1%.
-The pilot measures run-to-run variation before the main matrix; more rounds
-are added only under a rule written down before the main matrix starts.
+Three rounds give three pairs per condition. How small a difference that can
+show depends on the run-to-run variation, which the pilot measured; the rule
+below was fixed from it before the main matrix started.
+
+## Rule for more rounds (fixed 2026-11-13, before the main matrix)
+
+Basis, from the pilot (5 conditions, 2 rounds, 20 runs): the throughput of the
+same condition and cache mode differed between the two rounds by at most 0.25%
+(median 0.04%). The two pair ratios of a condition differed by at most 0.25%.
+TTFT p50 differed by up to 19% in one cell whose throughput differed by 0.25%.
+
+1. The main matrix and both diagnostics have 3 rounds. No round is added to
+   them, whatever the numbers look like.
+2. A pair with 3 failed attempts is reported as unmeasured.
+3. A condition whose three pair ratios span more than 2% of their geometric
+   mean is marked "unstable" in the report. It may get a follow-up experiment
+   with its own spec and folder. The follow-up is shown next to the original
+   and never replaces it or is pooled with it.
+4. A throughput ratio within 1% of 1.0 is reported as "no measurable effect".
+   Differences between conditions below 1% are not interpreted.
+5. TTFT percentiles are reported with their range over the rounds. A TTFT
+   difference inside that range is not interpreted.
 
 ## Statistics
 

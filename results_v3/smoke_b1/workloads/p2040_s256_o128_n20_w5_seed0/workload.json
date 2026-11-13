@@ -1,0 +1,23 @@
+{
+  "key": "p2040_s256_o128_n20_w5_seed0",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "vocab_size": 151643,
+  "prefix_len": 2040,
+  "suffix_len": 256,
+  "output_len": 128,
+  "warmup_prompts": 5,
+  "num_prompts": 20,
+  "seed": 0,
+  "block_size": 16,
+  "prompt_tokens_each": 2296,
+  "shared_prefix_ids_sha256": "771ea4841294b4e2b79a09ea10e69f106a9e864e504c48f6db087ec910149e07",
+  "warmup_input_ids_sha256": "7f41794c88b752bdc1490921068509136cb1a3d42e14463f1cd3b01828260681",
+  "main_input_ids_sha256": "021b172ef07c25cb9c7ac0c5fa714db44a4b20fafddb36b81a4679a95717a581",
+  "warmup_sha256": "b33d3d4cb7d36e98ec06f608e540ec70686bb2c2b640fc4888d1cd1624165550",
+  "main_sha256": "5416f9e74468bc15a4fd8266adc53d9d214cf60d3450929e05f6df3426ef846d",
+  "special_tokens_added": 0,
+  "server_prompt_tokens_each": 2296,
+  "cacheable_tokens_per_request": 2032,
+  "verified_prompts": 25
+}

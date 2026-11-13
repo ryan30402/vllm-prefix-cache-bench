@@ -1,0 +1,32 @@
+{
+  "fresh": {
+    "request_success": 0.0,
+    "prompt_tokens": 0.0
+  },
+  "warmup_deltas": {
+    "request_success": 5.0,
+    "prompt_tokens": 11480.0,
+    "generation_tokens": 640.0,
+    "prefix_cache_queries": 0.0,
+    "prefix_cache_hits": 0.0,
+    "num_preemptions": 0.0
+  },
+  "deltas": {
+    "request_success": 20.0,
+    "prompt_tokens": 45920.0,
+    "generation_tokens": 2560.0,
+    "prefix_cache_queries": 0.0,
+    "prefix_cache_hits": 0.0,
+    "num_preemptions": 0.0
+  },
+  "expected": {
+    "request_success": 20,
+    "prompt_tokens": 45920,
+    "generation_tokens": 2560,
+    "prefix_cache_hits": 0
+  },
+  "cache_hit_rate": 0.0,
+  "cache_hit_rate_expected": 0.0,
+  "hit_check": "exact",
+  "problems": []
+}

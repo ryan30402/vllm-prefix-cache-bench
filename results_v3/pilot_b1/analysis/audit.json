@@ -1,0 +1,261 @@
+{
+  "generated_at": "2026-11-13T09:59:21+00:00",
+  "experiment": "pilot",
+  "batch": 1,
+  "protocol_version": "3.0.0",
+  "manifest_sha256": "42365c21364585cbbfb0e3e94148d130f73ecd40415d8b16a3ccd51a34590901",
+  "frozen_git_commit": "5f0c011e2930a25dbc5ccf80774e5bbfd01f7d2f",
+  "analysis_code_sha256": "b94655a0fa9873ce4f050f93506bdce60059534f2c3a00992577f94ffc94c1a7",
+  "planned": {
+    "conditions": 5,
+    "rounds": 2,
+    "pairs": 10,
+    "runs": 20,
+    "measured_requests": 10000,
+    "warmup_requests": 1000,
+    "pairs_with_cache_on_first": 5,
+    "cache_on_first_by_round": {
+      "1": 2,
+      "2": 3
+    }
+  },
+  "complete_pairs": 10,
+  "missing_pairs": [],
+  "complete": true,
+  "attempts_by_state": {
+    "VALIDATED": 20
+  },
+  "measured_requests_in_tables": 10000,
+  "failed_requests_in_tables": 0,
+  "hit_checks": {
+    "exact": 20
+  },
+  "pairs_with_cache_on_first": 5,
+  "pairs_spanning_sessions": [],
+  "pairs_spanning_gpus": [],
+  "sessions": [
+    {
+      "session_id": 1,
+      "started_at": "2026-11-13T04:42:25+00:00",
+      "host": {
+        "hostname": "2680d7503de9",
+        "gpu_uuids": [
+          "GPU-46214f07-fbbb-3f3b-b582-76dbababb7c1"
+        ],
+        "driver_versions": [
+          "595.91.07"
+        ],
+        "pip_freeze_sha256": "6197c06bfd744941c44ce4e0721182ae55efa046d5a803d435d6ca05930e86df"
+      },
+      "git_commit": "5f0c011e2930a25dbc5ccf80774e5bbfd01f7d2f",
+      "telemetry_fields": [
+        "timestamp",
+        "uuid",
+        "temperature.gpu",
+        "power.draw",
+        "utilization.gpu",
+        "utilization.memory",
+        "memory.used",
+        "clocks.current.sm",
+        "clocks.current.memory"
+      ],
+      "workloads_verified": 4,
+      "environment_file": "environment_s1.json"
+    }
+  ],
+  "distinct_hosts": 1,
+  "sources_by_condition": {
+    "p2048_c128_g90": [
+      "runs/r1_p2048_c128_g90_off/attempt_1",
+      "runs/r1_p2048_c128_g90_on/attempt_1",
+      "runs/r2_p2048_c128_g90_on/attempt_1",
+      "runs/r2_p2048_c128_g90_off/attempt_1"
+    ],
+    "p0000_c032_g90": [
+      "runs/r1_p0000_c032_g90_off/attempt_1",
+      "runs/r1_p0000_c032_g90_on/attempt_1",
+      "runs/r2_p0000_c032_g90_on/attempt_1",
+      "runs/r2_p0000_c032_g90_off/attempt_1"
+    ],
+    "p2048_c001_g90": [
+      "runs/r1_p2048_c001_g90_on/attempt_1",
+      "runs/r1_p2048_c001_g90_off/attempt_1",
+      "runs/r2_p2048_c001_g90_off/attempt_1",
+      "runs/r2_p2048_c001_g90_on/attempt_1"
+    ],
+    "p2040_c032_g90": [
+      "runs/r1_p2040_c032_g90_off/attempt_1",
+      "runs/r1_p2040_c032_g90_on/attempt_1",
+      "runs/r2_p2040_c032_g90_on/attempt_1",
+      "runs/r2_p2040_c032_g90_off/attempt_1"
+    ],
+    "p4096_c128_g90": [
+      "runs/r1_p4096_c128_g90_on/attempt_1",
+      "runs/r1_p4096_c128_g90_off/attempt_1",
+      "runs/r2_p4096_c128_g90_off/attempt_1",
+      "runs/r2_p4096_c128_g90_on/attempt_1"
+    ]
+  },
+  "attempts": [
+    {
+      "run_id": "r1_p2048_c128_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2048_c128_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p0000_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p0000_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2048_c001_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2048_c001_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2040_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2040_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p4096_c128_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p4096_c128_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p0000_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p0000_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2040_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2040_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2048_c128_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2048_c128_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2048_c001_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2048_c001_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p4096_c128_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p4096_c128_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    }
+  ]
+}

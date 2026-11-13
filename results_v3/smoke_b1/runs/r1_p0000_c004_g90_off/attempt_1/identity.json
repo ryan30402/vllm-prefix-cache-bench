@@ -1,0 +1,68 @@
+{
+  "protocol_version": "3.0.0",
+  "run_config": {
+    "experiment": "smoke",
+    "batch": 1,
+    "run_id": "r1_p0000_c004_g90_off",
+    "pair_id": "r1_p0000_c004_g90",
+    "condition_id": "p0000_c004_g90",
+    "round": 1,
+    "cache": "off",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prefix_len": 0,
+    "concurrency": 4,
+    "gpu_memory_utilization": 0.9,
+    "server": {
+      "port": 8000,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "max_num_seqs": 256,
+      "max_num_batched_tokens": 2048,
+      "generation_config": "vllm",
+      "seed": 0,
+      "prefix_caching": false
+    },
+    "workload": {
+      "suffix_len": 256,
+      "output_len": 128,
+      "num_prompts": 20,
+      "warmup_prompts": 5,
+      "seed": 0,
+      "block_size": 16
+    },
+    "workload_key": "p0000_s256_o128_n20_w5_seed0",
+    "bench": {
+      "temperature": 0.0,
+      "timeout_s": 7200,
+      "warmup_timeout_s": 1800
+    },
+    "telemetry": {
+      "required": true,
+      "interval_s": 2
+    }
+  },
+  "workload": {
+    "key": "p0000_s256_o128_n20_w5_seed0",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "warmup_sha256": "bc9858677b768e6ef7dfb17d271e26e7268f9fe30764f2c09de57aa4c10fe7fd",
+    "main_sha256": "070e50140429c4525b07f89ca1130c0dcd4b478f1800f9c06163a565e1270ddf",
+    "warmup_input_ids_sha256": "edd18d4df1e34d540fa880dda479d8ccde0e5952cd5521da2300bc0f42be27de",
+    "main_input_ids_sha256": "b06ac381337394252ad61e9799e7c19419f04ea3eae8f4dc89586078cc9058a0",
+    "shared_prefix_ids_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+    "server_prompt_tokens_each": 256,
+    "cacheable_tokens_per_request": 0
+  },
+  "env_identity": {
+    "gpu_models": [
+      "NVIDIA A40"
+    ],
+    "gpu_count": 1,
+    "vllm": "0.33.0",
+    "torch": "2.14.0",
+    "transformers": "5.20.2",
+    "python": "3.12.3"
+  },
+  "measurement_code_sha256": "06913c7631fec535905de70c7ec693ed8496f32184124f2fbb5acdaf45b3c1f7",
+  "sha256": "784c2e272259953706d9718b515e1c9537e4807b3f6f660bcfdfc477cccc1587"
+}

@@ -1,0 +1,11 @@
+{
+  "request_success": 50.0,
+  "prompt_tokens": 64000.0,
+  "generation_tokens": 6400.0,
+  "prefix_cache_queries": 64000.0,
+  "prefix_cache_hits": 50176.0,
+  "num_preemptions": 0.0,
+  "kv_cache_usage_perc": 0.0,
+  "num_requests_running": 0.0,
+  "num_requests_waiting": 0.0
+}

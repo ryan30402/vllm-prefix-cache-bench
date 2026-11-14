@@ -1,0 +1,37 @@
+{
+  "pid": 120694,
+  "pgid": 120694,
+  "proc_start_time": "260947577",
+  "port": 8000,
+  "cmd": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen2.5-7B-Instruct",
+    "--revision",
+    "a09a35458c702b33eeacc393d103063234e8bc28",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "8192",
+    "--gpu-memory-utilization",
+    "0.9",
+    "--max-num-seqs",
+    "256",
+    "--max-num-batched-tokens",
+    "2048",
+    "--generation-config",
+    "vllm",
+    "--seed",
+    "0",
+    "--no-enable-prefix-caching"
+  ],
+  "started_at": "2026-11-13T23:24:18+00:00",
+  "model_card": {
+    "id": "Qwen/Qwen2.5-7B-Instruct",
+    "max_model_len": 8192
+  },
+  "non_default_args": "{'model_tag': 'Qwen/Qwen2.5-7B-Instruct', 'model': 'Qwen/Qwen2.5-7B-Instruct', 'revision': 'a09a35458c702b33eeacc393d103063234e8bc28', 'max_model_len': 8192, 'generation_config': 'vllm', 'gpu_memory_utilization': 0.9, 'enable_prefix_caching': False, 'max_num_batched_tokens': 2048, 'max_num_seqs': 256}",
+  "kv_cache_size_tokens": 459936,
+  "chunked_prefill_max_num_batched_tokens": null,
+  "ready_at": "2026-11-13T23:25:06+00:00"
+}

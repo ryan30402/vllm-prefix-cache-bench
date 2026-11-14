@@ -1,0 +1,68 @@
+{
+  "protocol_version": "3.0.0",
+  "run_config": {
+    "experiment": "main",
+    "batch": 1,
+    "run_id": "r1_p4096_c001_g90_on",
+    "pair_id": "r1_p4096_c001_g90",
+    "condition_id": "p4096_c001_g90",
+    "round": 1,
+    "cache": "on",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prefix_len": 4096,
+    "concurrency": 1,
+    "gpu_memory_utilization": 0.9,
+    "server": {
+      "port": 8000,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "max_num_seqs": 256,
+      "max_num_batched_tokens": 2048,
+      "generation_config": "vllm",
+      "seed": 0,
+      "prefix_caching": true
+    },
+    "workload": {
+      "suffix_len": 256,
+      "output_len": 128,
+      "num_prompts": 500,
+      "warmup_prompts": 50,
+      "seed": 0,
+      "block_size": 16
+    },
+    "workload_key": "p4096_s256_o128_n500_w50_seed0",
+    "bench": {
+      "temperature": 0.0,
+      "timeout_s": 7200,
+      "warmup_timeout_s": 1800
+    },
+    "telemetry": {
+      "required": true,
+      "interval_s": 2
+    }
+  },
+  "workload": {
+    "key": "p4096_s256_o128_n500_w50_seed0",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "warmup_sha256": "a8b9069c4c3e6cd6136e56d891bbd34d3269576a11e0d171fc63702a00c8d81d",
+    "main_sha256": "685cb78ab33fab36e52ecee5974d048af635f2bf4dd2867f0a38df2b8b1e3133",
+    "warmup_input_ids_sha256": "8c53f10f07bc03f36733f3775b9ea864dfac4f0fefa4d998d78ee4f89f992a2a",
+    "main_input_ids_sha256": "c9155d4f92a36409cb3a4eccab6d09f0530064edbb8417380fdbf5276ce9109e",
+    "shared_prefix_ids_sha256": "d490550ec3fe7910b070c4304f360198c0567ea55a7dd1fad5b0384b993da1b2",
+    "server_prompt_tokens_each": 4352,
+    "cacheable_tokens_per_request": 4096
+  },
+  "env_identity": {
+    "gpu_models": [
+      "NVIDIA A40"
+    ],
+    "gpu_count": 1,
+    "vllm": "0.33.0",
+    "torch": "2.14.0",
+    "transformers": "5.20.2",
+    "python": "3.12.3"
+  },
+  "measurement_code_sha256": "06913c7631fec535905de70c7ec693ed8496f32184124f2fbb5acdaf45b3c1f7",
+  "sha256": "a17c22cb7b58dc47e4b300bafd9193fe24657b6b6cc7c1c843be88a198c94c50"
+}

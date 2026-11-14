@@ -1,0 +1,15 @@
+{
+  "state": "VALIDATED",
+  "run_id": "r2_p0256_c128_g90_on",
+  "pair_id": "r2_p0256_c128_g90",
+  "attempt": 1,
+  "order": 55,
+  "session_id": 1,
+  "identity_sha256": "489f5baa8c047984c3b8af18e23ccc841d36271654c8d62432e37f999ca3cd50",
+  "manifest_sha256": "39fab210bbba8680f6edd5201f88a28d0c016eba402801e33bbb9aac1eff1c1a",
+  "runner_pid": 36304,
+  "started_at": "2026-11-13T23:21:46+00:00",
+  "finished_at": "2026-11-13T23:24:18+00:00",
+  "seconds": 152,
+  "files_sha256": "a5aa0f36209d6f0d3ff71fa2ae7efd055e8b5fd43ff78ea452a46cd18066e7ea"
+}

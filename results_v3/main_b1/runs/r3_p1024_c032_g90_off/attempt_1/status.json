@@ -1,0 +1,15 @@
+{
+  "state": "VALIDATED",
+  "run_id": "r3_p1024_c032_g90_off",
+  "pair_id": "r3_p1024_c032_g90",
+  "attempt": 1,
+  "order": 82,
+  "session_id": 1,
+  "identity_sha256": "378079d9b855f08ee7ff96f4536d061b90795e0ddb527751f301e3adce00418e",
+  "manifest_sha256": "39fab210bbba8680f6edd5201f88a28d0c016eba402801e33bbb9aac1eff1c1a",
+  "runner_pid": 36304,
+  "started_at": "2026-11-14T03:24:23+00:00",
+  "finished_at": "2026-11-14T03:28:23+00:00",
+  "seconds": 240,
+  "files_sha256": "3d8e1f0f1d77017ccc469c011a556b9cf710badff2ea4c98e735fc828b94775a"
+}

@@ -1,0 +1,6373 @@
+{
+  "protocol_version": "3.0.0",
+  "spec": {
+    "name": "main",
+    "batch": 1,
+    "rounds": 3,
+    "order_seed": 3001,
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "server": {
+      "port": 8000,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "max_num_seqs": 256,
+      "max_num_batched_tokens": 2048,
+      "generation_config": "vllm",
+      "seed": 0
+    },
+    "bench": {
+      "temperature": 0.0,
+      "timeout_s": 7200,
+      "warmup_timeout_s": 1800
+    },
+    "telemetry": {
+      "required": true,
+      "interval_s": 2
+    },
+    "validity": {
+      "max_pair_attempts": 3
+    },
+    "workload": {
+      "suffix_len": 256,
+      "output_len": 128,
+      "num_prompts": 500,
+      "warmup_prompts": 50,
+      "seed": 0,
+      "block_size": 16
+    },
+    "conditions": {
+      "grid": {
+        "prefix_len": [
+          0,
+          256,
+          1024,
+          2048,
+          4096
+        ],
+        "concurrency": [
+          1,
+          8,
+          32,
+          128
+        ]
+      }
+    }
+  },
+  "plan": [
+    {
+      "order": 1,
+      "round": 1,
+      "position_in_round": 1,
+      "pair_id": "r1_p0000_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0000_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c001_g90_off",
+        "pair_id": "r1_p0000_c001_g90",
+        "condition_id": "p0000_c001_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d3c04e72f8944e19577b1d97b12c65f96ac1e107f790c2ca9ac51ba68a858c8a"
+    },
+    {
+      "order": 2,
+      "round": 1,
+      "position_in_round": 1,
+      "pair_id": "r1_p0000_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0000_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c001_g90_on",
+        "pair_id": "r1_p0000_c001_g90",
+        "condition_id": "p0000_c001_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d3a9089d09e145cc0b86966070da98a082165fcd94a80ab47343f9b8748eecbe"
+    },
+    {
+      "order": 3,
+      "round": 1,
+      "position_in_round": 2,
+      "pair_id": "r1_p2048_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p2048_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c001_g90_on",
+        "pair_id": "r1_p2048_c001_g90",
+        "condition_id": "p2048_c001_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "89e6d2d1311c8235ee778bd6dd1786073a310f03b2fadb4b5242f223539a8b16"
+    },
+    {
+      "order": 4,
+      "round": 1,
+      "position_in_round": 2,
+      "pair_id": "r1_p2048_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p2048_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c001_g90_off",
+        "pair_id": "r1_p2048_c001_g90",
+        "condition_id": "p2048_c001_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9d294cfc15c94597308392d6623b35c50df3c6eb9614ce33459f2b0b8643b804"
+    },
+    {
+      "order": 5,
+      "round": 1,
+      "position_in_round": 3,
+      "pair_id": "r1_p0256_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0256_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c128_g90_on",
+        "pair_id": "r1_p0256_c128_g90",
+        "condition_id": "p0256_c128_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "639ead6dc14671e1dba6147051893bc33dacf121b822227351a57509ad5f855f"
+    },
+    {
+      "order": 6,
+      "round": 1,
+      "position_in_round": 3,
+      "pair_id": "r1_p0256_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0256_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c128_g90_off",
+        "pair_id": "r1_p0256_c128_g90",
+        "condition_id": "p0256_c128_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "7a60c0abea5498ae56bf4c391714afdf06fb1805b8a9f14fbbbe76489408e61f"
+    },
+    {
+      "order": 7,
+      "round": 1,
+      "position_in_round": 4,
+      "pair_id": "r1_p0000_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0000_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c032_g90_off",
+        "pair_id": "r1_p0000_c032_g90",
+        "condition_id": "p0000_c032_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "dc17561112246923bf52bf23762f9bdee5208d878ee1e480233447c7a45c8d4d"
+    },
+    {
+      "order": 8,
+      "round": 1,
+      "position_in_round": 4,
+      "pair_id": "r1_p0000_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0000_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c032_g90_on",
+        "pair_id": "r1_p0000_c032_g90",
+        "condition_id": "p0000_c032_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "e392b0f253cd7a2635624bd487fd1c9ad8c7a975b981ec515d38325988714103"
+    },
+    {
+      "order": 9,
+      "round": 1,
+      "position_in_round": 5,
+      "pair_id": "r1_p2048_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p2048_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c128_g90_off",
+        "pair_id": "r1_p2048_c128_g90",
+        "condition_id": "p2048_c128_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "117f7f4c23c34a9c619ae2daa6a3a256c6cdadf1f00472476d9f9a4e8d8d6919"
+    },
+    {
+      "order": 10,
+      "round": 1,
+      "position_in_round": 5,
+      "pair_id": "r1_p2048_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p2048_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c128_g90_on",
+        "pair_id": "r1_p2048_c128_g90",
+        "condition_id": "p2048_c128_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "df96acacefcddab00e61842b09950c1f8ac933f18a0ac2dec3a7a8e190fec108"
+    },
+    {
+      "order": 11,
+      "round": 1,
+      "position_in_round": 6,
+      "pair_id": "r1_p2048_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p2048_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c008_g90_on",
+        "pair_id": "r1_p2048_c008_g90",
+        "condition_id": "p2048_c008_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "5124b4ccc3822a4b6591526a656127f2d88564a3097428929557cbb7cf55a371"
+    },
+    {
+      "order": 12,
+      "round": 1,
+      "position_in_round": 6,
+      "pair_id": "r1_p2048_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p2048_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c008_g90_off",
+        "pair_id": "r1_p2048_c008_g90",
+        "condition_id": "p2048_c008_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "661183f030189b9ffff7e3abc92e02568ee8cad6f9d011208866ea2ead7ece90"
+    },
+    {
+      "order": 13,
+      "round": 1,
+      "position_in_round": 7,
+      "pair_id": "r1_p1024_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p1024_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c001_g90_off",
+        "pair_id": "r1_p1024_c001_g90",
+        "condition_id": "p1024_c001_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "72c90dc2f9be04ef237b2ef11d8ed82abf367f3688cb561609291a8fb5b22c15"
+    },
+    {
+      "order": 14,
+      "round": 1,
+      "position_in_round": 7,
+      "pair_id": "r1_p1024_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p1024_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c001_g90_on",
+        "pair_id": "r1_p1024_c001_g90",
+        "condition_id": "p1024_c001_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "757197f401a73004373bdf077d952c986d852ca4e293c9bfc1d3590e11291115"
+    },
+    {
+      "order": 15,
+      "round": 1,
+      "position_in_round": 8,
+      "pair_id": "r1_p1024_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p1024_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c008_g90_on",
+        "pair_id": "r1_p1024_c008_g90",
+        "condition_id": "p1024_c008_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "907b0935684a23f06c66f1a9b2318862952c28da57326a5a5d9a07fcc8c19ef4"
+    },
+    {
+      "order": 16,
+      "round": 1,
+      "position_in_round": 8,
+      "pair_id": "r1_p1024_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p1024_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c008_g90_off",
+        "pair_id": "r1_p1024_c008_g90",
+        "condition_id": "p1024_c008_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "c08349092b74d0d63e115805777113fe8cfc95664edafbf777a203952fee50d3"
+    },
+    {
+      "order": 17,
+      "round": 1,
+      "position_in_round": 9,
+      "pair_id": "r1_p4096_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p4096_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c001_g90_off",
+        "pair_id": "r1_p4096_c001_g90",
+        "condition_id": "p4096_c001_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "cd1c6cc4bb613a5e9481d8fbd0d546567fda3000768f171a7144be9124595778"
+    },
+    {
+      "order": 18,
+      "round": 1,
+      "position_in_round": 9,
+      "pair_id": "r1_p4096_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p4096_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c001_g90_on",
+        "pair_id": "r1_p4096_c001_g90",
+        "condition_id": "p4096_c001_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "a17c22cb7b58dc47e4b300bafd9193fe24657b6b6cc7c1c843be88a198c94c50"
+    },
+    {
+      "order": 19,
+      "round": 1,
+      "position_in_round": 10,
+      "pair_id": "r1_p4096_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p4096_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c008_g90_on",
+        "pair_id": "r1_p4096_c008_g90",
+        "condition_id": "p4096_c008_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9ce21eb394a29ef146d82776974e840fccdd6c3e3f0b12b348fe8255820aa1a7"
+    },
+    {
+      "order": 20,
+      "round": 1,
+      "position_in_round": 10,
+      "pair_id": "r1_p4096_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p4096_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c008_g90_off",
+        "pair_id": "r1_p4096_c008_g90",
+        "condition_id": "p4096_c008_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9e34c7274224b2580969e82eb079c769786b2df6ea6eae132c06e42414e90627"
+    },
+    {
+      "order": 21,
+      "round": 1,
+      "position_in_round": 11,
+      "pair_id": "r1_p1024_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p1024_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c032_g90_off",
+        "pair_id": "r1_p1024_c032_g90",
+        "condition_id": "p1024_c032_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d82491e362b0aeabfb33f21131b6c612eb923070507ed13461ec558ff677a989"
+    },
+    {
+      "order": 22,
+      "round": 1,
+      "position_in_round": 11,
+      "pair_id": "r1_p1024_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p1024_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c032_g90_on",
+        "pair_id": "r1_p1024_c032_g90",
+        "condition_id": "p1024_c032_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "2bef19fc02cc83b6d1af51178c2c4a9f1ad697f31f7d01701b817c675867e4b5"
+    },
+    {
+      "order": 23,
+      "round": 1,
+      "position_in_round": 12,
+      "pair_id": "r1_p4096_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p4096_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c032_g90_on",
+        "pair_id": "r1_p4096_c032_g90",
+        "condition_id": "p4096_c032_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "86ca79de6d5e25a935f121620550545f396ab2ebceb2165391c1cc7facbc36d2"
+    },
+    {
+      "order": 24,
+      "round": 1,
+      "position_in_round": 12,
+      "pair_id": "r1_p4096_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p4096_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c032_g90_off",
+        "pair_id": "r1_p4096_c032_g90",
+        "condition_id": "p4096_c032_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "3ce47ce95aa386b046784ebfb1d6c99512238653a2a1308dd00f542dd5907ab0"
+    },
+    {
+      "order": 25,
+      "round": 1,
+      "position_in_round": 13,
+      "pair_id": "r1_p0000_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0000_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c008_g90_off",
+        "pair_id": "r1_p0000_c008_g90",
+        "condition_id": "p0000_c008_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "960ae1a87b058acca5458ecf909835d0fe6eca5fa209b5170339adfbd13ee41d"
+    },
+    {
+      "order": 26,
+      "round": 1,
+      "position_in_round": 13,
+      "pair_id": "r1_p0000_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0000_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c008_g90_on",
+        "pair_id": "r1_p0000_c008_g90",
+        "condition_id": "p0000_c008_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9d4b22009782b221a36edce5751a9a6d2faf60de0b45e450bbd578b55b52c015"
+    },
+    {
+      "order": 27,
+      "round": 1,
+      "position_in_round": 14,
+      "pair_id": "r1_p0256_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0256_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c008_g90_off",
+        "pair_id": "r1_p0256_c008_g90",
+        "condition_id": "p0256_c008_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "df3041c5a425605b459b20f315933c7d3c9ee21904058d878d1e9f457a7e6301"
+    },
+    {
+      "order": 28,
+      "round": 1,
+      "position_in_round": 14,
+      "pair_id": "r1_p0256_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p0256_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c008_g90_on",
+        "pair_id": "r1_p0256_c008_g90",
+        "condition_id": "p0256_c008_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "acd2e88c5a7f03c03a54932d4f36d2a4fd0d88043f04a99d52d122ebd1f2ee33"
+    },
+    {
+      "order": 29,
+      "round": 1,
+      "position_in_round": 15,
+      "pair_id": "r1_p0256_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0256_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c032_g90_on",
+        "pair_id": "r1_p0256_c032_g90",
+        "condition_id": "p0256_c032_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "2825a547ca0f3d2a358933355f04b8168e1b473f1b5e6c1b6def4fe66f9a7957"
+    },
+    {
+      "order": 30,
+      "round": 1,
+      "position_in_round": 15,
+      "pair_id": "r1_p0256_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0256_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c032_g90_off",
+        "pair_id": "r1_p0256_c032_g90",
+        "condition_id": "p0256_c032_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "5f8a69744bad06f0bd22a011af9dfd4b77fc899d87745839e1cb56c75fa0c903"
+    },
+    {
+      "order": 31,
+      "round": 1,
+      "position_in_round": 16,
+      "pair_id": "r1_p0256_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0256_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c001_g90_on",
+        "pair_id": "r1_p0256_c001_g90",
+        "condition_id": "p0256_c001_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9545585ca5d85ac14f5a85b441a96b4173fe549e48a1aca82c3f7526bd1bdf34"
+    },
+    {
+      "order": 32,
+      "round": 1,
+      "position_in_round": 16,
+      "pair_id": "r1_p0256_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0256_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0256_c001_g90_off",
+        "pair_id": "r1_p0256_c001_g90",
+        "condition_id": "p0256_c001_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "8506e438a032c677ddffb0e48bedfd278fbd9d95974b0888b9ccb308982affcd"
+    },
+    {
+      "order": 33,
+      "round": 1,
+      "position_in_round": 17,
+      "pair_id": "r1_p0000_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0000_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c128_g90_on",
+        "pair_id": "r1_p0000_c128_g90",
+        "condition_id": "p0000_c128_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "c0fabe9b3687be40778fee55821c62c71712b288077e618c662d443e6c592662"
+    },
+    {
+      "order": 34,
+      "round": 1,
+      "position_in_round": 17,
+      "pair_id": "r1_p0000_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p0000_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p0000_c128_g90_off",
+        "pair_id": "r1_p0000_c128_g90",
+        "condition_id": "p0000_c128_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "76fae37e7b4c3d1ba398df41d408750113dbd6f403794cc64696b484c68be7dc"
+    },
+    {
+      "order": 35,
+      "round": 1,
+      "position_in_round": 18,
+      "pair_id": "r1_p1024_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p1024_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c128_g90_off",
+        "pair_id": "r1_p1024_c128_g90",
+        "condition_id": "p1024_c128_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d9965d365228a3692e3798052b1184b0b4cd7aff1dd94bb4b16068edf9157a29"
+    },
+    {
+      "order": 36,
+      "round": 1,
+      "position_in_round": 18,
+      "pair_id": "r1_p1024_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p1024_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p1024_c128_g90_on",
+        "pair_id": "r1_p1024_c128_g90",
+        "condition_id": "p1024_c128_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "ca81a028c0403840df05110847a7956daad8304a3fa8e74ecc2595f7b35d0ff7"
+    },
+    {
+      "order": 37,
+      "round": 1,
+      "position_in_round": 19,
+      "pair_id": "r1_p2048_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p2048_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c032_g90_on",
+        "pair_id": "r1_p2048_c032_g90",
+        "condition_id": "p2048_c032_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "7acd410cd698951cf959bd12238d1dab612600e59a41a485f38ceec33664e39c"
+    },
+    {
+      "order": 38,
+      "round": 1,
+      "position_in_round": 19,
+      "pair_id": "r1_p2048_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r1_p2048_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p2048_c032_g90_off",
+        "pair_id": "r1_p2048_c032_g90",
+        "condition_id": "p2048_c032_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d3d4f4698d3c3d9b02d952030b28a16e6a2f14d00c2d2e4d4586939425f794bf"
+    },
+    {
+      "order": 39,
+      "round": 1,
+      "position_in_round": 20,
+      "pair_id": "r1_p4096_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p4096_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c128_g90_off",
+        "pair_id": "r1_p4096_c128_g90",
+        "condition_id": "p4096_c128_g90",
+        "round": 1,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "a5e0b482f39468db84760a3566c4b70091d9247b300b998d2bd2ef43363008bf"
+    },
+    {
+      "order": 40,
+      "round": 1,
+      "position_in_round": 20,
+      "pair_id": "r1_p4096_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r1_p4096_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r1_p4096_c128_g90_on",
+        "pair_id": "r1_p4096_c128_g90",
+        "condition_id": "p4096_c128_g90",
+        "round": 1,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "3ebeabbac850af30b22049e6770978f801ca3229ff983699ab2af91790ef5a22"
+    },
+    {
+      "order": 41,
+      "round": 2,
+      "position_in_round": 1,
+      "pair_id": "r2_p4096_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p4096_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c008_g90_off",
+        "pair_id": "r2_p4096_c008_g90",
+        "condition_id": "p4096_c008_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "dc1668aa1be251fe62448eb30825bad2995590c3a27f00e325e032131313be63"
+    },
+    {
+      "order": 42,
+      "round": 2,
+      "position_in_round": 1,
+      "pair_id": "r2_p4096_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p4096_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c008_g90_on",
+        "pair_id": "r2_p4096_c008_g90",
+        "condition_id": "p4096_c008_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "29da1cb03e3266f46ec9c1c6843a86378389e54192638da6b930790dad97c3b8"
+    },
+    {
+      "order": 43,
+      "round": 2,
+      "position_in_round": 2,
+      "pair_id": "r2_p1024_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p1024_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c001_g90_on",
+        "pair_id": "r2_p1024_c001_g90",
+        "condition_id": "p1024_c001_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "47a248b4b6b5c3fc230050997d8e5c174e083887af76844a27e9f2d788bf0f63"
+    },
+    {
+      "order": 44,
+      "round": 2,
+      "position_in_round": 2,
+      "pair_id": "r2_p1024_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p1024_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c001_g90_off",
+        "pair_id": "r2_p1024_c001_g90",
+        "condition_id": "p1024_c001_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "7dafda332d9fc0f17ef56ef3f85dc10cf5d42a5df96f36593d994668f46fef08"
+    },
+    {
+      "order": 45,
+      "round": 2,
+      "position_in_round": 3,
+      "pair_id": "r2_p1024_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p1024_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c032_g90_on",
+        "pair_id": "r2_p1024_c032_g90",
+        "condition_id": "p1024_c032_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "7ff3ae20cc5b12b6686b812529f9bda4fefd4be3e8aa26c6b35abb11687a9aaa"
+    },
+    {
+      "order": 46,
+      "round": 2,
+      "position_in_round": 3,
+      "pair_id": "r2_p1024_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p1024_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c032_g90_off",
+        "pair_id": "r2_p1024_c032_g90",
+        "condition_id": "p1024_c032_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "5f8cdd7a73df69f1a1a483207dd3aefd8988cc1f6369960dfa0d94491f4e98a8"
+    },
+    {
+      "order": 47,
+      "round": 2,
+      "position_in_round": 4,
+      "pair_id": "r2_p2048_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p2048_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c001_g90_off",
+        "pair_id": "r2_p2048_c001_g90",
+        "condition_id": "p2048_c001_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d0a56adf22c75e5f96798612b345c26cdd1476da9ae958de9e519a49fa3da24a"
+    },
+    {
+      "order": 48,
+      "round": 2,
+      "position_in_round": 4,
+      "pair_id": "r2_p2048_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p2048_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c001_g90_on",
+        "pair_id": "r2_p2048_c001_g90",
+        "condition_id": "p2048_c001_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "00c6e1fdbf57f67a3b7010c894472223da86291f700b838da4993569b15f98c0"
+    },
+    {
+      "order": 49,
+      "round": 2,
+      "position_in_round": 5,
+      "pair_id": "r2_p1024_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p1024_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c008_g90_off",
+        "pair_id": "r2_p1024_c008_g90",
+        "condition_id": "p1024_c008_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "af36793f85d1795ada2451f7f7e16f55a3d67f5e08456933f7ffe4996c967d46"
+    },
+    {
+      "order": 50,
+      "round": 2,
+      "position_in_round": 5,
+      "pair_id": "r2_p1024_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p1024_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c008_g90_on",
+        "pair_id": "r2_p1024_c008_g90",
+        "condition_id": "p1024_c008_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "0171dfc41a309e42c7980dfb95313a27e8cae75f6d18885803d36021a866fc78"
+    },
+    {
+      "order": 51,
+      "round": 2,
+      "position_in_round": 6,
+      "pair_id": "r2_p2048_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p2048_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c008_g90_off",
+        "pair_id": "r2_p2048_c008_g90",
+        "condition_id": "p2048_c008_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "5be1d9f6303c9d0e6449994296aa78f792fede762935f0f877c1bfbc358a2d64"
+    },
+    {
+      "order": 52,
+      "round": 2,
+      "position_in_round": 6,
+      "pair_id": "r2_p2048_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p2048_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c008_g90_on",
+        "pair_id": "r2_p2048_c008_g90",
+        "condition_id": "p2048_c008_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "c0a43e4f2490acefdea00295d067a82e63fd3726f8e87844dc44e0537ba47988"
+    },
+    {
+      "order": 53,
+      "round": 2,
+      "position_in_round": 7,
+      "pair_id": "r2_p0000_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0000_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c001_g90_on",
+        "pair_id": "r2_p0000_c001_g90",
+        "condition_id": "p0000_c001_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "c3eb63de2fecf0d9b7c90a126c6a305de9f4aee79d2580fd002e6d7e51c5f7e6"
+    },
+    {
+      "order": 54,
+      "round": 2,
+      "position_in_round": 7,
+      "pair_id": "r2_p0000_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0000_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c001_g90_off",
+        "pair_id": "r2_p0000_c001_g90",
+        "condition_id": "p0000_c001_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9c2a42d8c12613146ca82df97c4962ef947c7c6a01e1f6b9f655bbf97ff7e937"
+    },
+    {
+      "order": 55,
+      "round": 2,
+      "position_in_round": 8,
+      "pair_id": "r2_p0256_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0256_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c128_g90_on",
+        "pair_id": "r2_p0256_c128_g90",
+        "condition_id": "p0256_c128_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "489f5baa8c047984c3b8af18e23ccc841d36271654c8d62432e37f999ca3cd50"
+    },
+    {
+      "order": 56,
+      "round": 2,
+      "position_in_round": 8,
+      "pair_id": "r2_p0256_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0256_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c128_g90_off",
+        "pair_id": "r2_p0256_c128_g90",
+        "condition_id": "p0256_c128_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "713033d05b5cd4938a7e11b5358cdfe6e2d0c95874f1a11f45db33208cd7ddba"
+    },
+    {
+      "order": 57,
+      "round": 2,
+      "position_in_round": 9,
+      "pair_id": "r2_p0000_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p0000_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c008_g90_off",
+        "pair_id": "r2_p0000_c008_g90",
+        "condition_id": "p0000_c008_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "682f1e81e67cd98d8379b37c3a4d2485ef59db5ac8c860a780c3f00971e7d9d6"
+    },
+    {
+      "order": 58,
+      "round": 2,
+      "position_in_round": 9,
+      "pair_id": "r2_p0000_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p0000_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c008_g90_on",
+        "pair_id": "r2_p0000_c008_g90",
+        "condition_id": "p0000_c008_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "18b32022bec77681faabd724c5dea0e7eacb4345f6dd40234eef8ce1c013a851"
+    },
+    {
+      "order": 59,
+      "round": 2,
+      "position_in_round": 10,
+      "pair_id": "r2_p0000_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0000_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c032_g90_on",
+        "pair_id": "r2_p0000_c032_g90",
+        "condition_id": "p0000_c032_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "b7079b0010107e990baafa3e3e2a0e54163beffc0faef34be65418a512ec8497"
+    },
+    {
+      "order": 60,
+      "round": 2,
+      "position_in_round": 10,
+      "pair_id": "r2_p0000_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0000_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c032_g90_off",
+        "pair_id": "r2_p0000_c032_g90",
+        "condition_id": "p0000_c032_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "ca6ac124b06ad5df558d17c6550038857b11fc670526bdeb94a7075bde8e57ae"
+    },
+    {
+      "order": 61,
+      "round": 2,
+      "position_in_round": 11,
+      "pair_id": "r2_p2048_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p2048_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c032_g90_on",
+        "pair_id": "r2_p2048_c032_g90",
+        "condition_id": "p2048_c032_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "526af6d3841a7aeaee262c0510a627ed3107326503416236904375bbb3d4078c"
+    },
+    {
+      "order": 62,
+      "round": 2,
+      "position_in_round": 11,
+      "pair_id": "r2_p2048_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p2048_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c032_g90_off",
+        "pair_id": "r2_p2048_c032_g90",
+        "condition_id": "p2048_c032_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d10ba17d792d6c07d2d2a36d121dfa1328e998588b9752b7fe8cbcb41db1f72c"
+    },
+    {
+      "order": 63,
+      "round": 2,
+      "position_in_round": 12,
+      "pair_id": "r2_p0256_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0256_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c001_g90_on",
+        "pair_id": "r2_p0256_c001_g90",
+        "condition_id": "p0256_c001_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "8af1aa4de3491b706a7a36dc9e23191521353fbc0885fd4b904f0a37736711c8"
+    },
+    {
+      "order": 64,
+      "round": 2,
+      "position_in_round": 12,
+      "pair_id": "r2_p0256_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0256_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c001_g90_off",
+        "pair_id": "r2_p0256_c001_g90",
+        "condition_id": "p0256_c001_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "331320336d21a63d46218d3a84974421557ea7360336260d5cff6abecf1634aa"
+    },
+    {
+      "order": 65,
+      "round": 2,
+      "position_in_round": 13,
+      "pair_id": "r2_p4096_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p4096_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c001_g90_off",
+        "pair_id": "r2_p4096_c001_g90",
+        "condition_id": "p4096_c001_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "c5791a33099fde6d0ee021909b8775ea27dddfc926020d3ed8e75f13379ce715"
+    },
+    {
+      "order": 66,
+      "round": 2,
+      "position_in_round": 13,
+      "pair_id": "r2_p4096_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p4096_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c001_g90_on",
+        "pair_id": "r2_p4096_c001_g90",
+        "condition_id": "p4096_c001_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "583ffebf402a350d5b4ce1099029ea9693c32ed3fadb2130408392389168028f"
+    },
+    {
+      "order": 67,
+      "round": 2,
+      "position_in_round": 14,
+      "pair_id": "r2_p0256_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0256_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c008_g90_on",
+        "pair_id": "r2_p0256_c008_g90",
+        "condition_id": "p0256_c008_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "689f189fd1a1967408cf11b5fe42041f94698eeb5ce8720e9ed25f81b01718d2"
+    },
+    {
+      "order": 68,
+      "round": 2,
+      "position_in_round": 14,
+      "pair_id": "r2_p0256_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p0256_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c008_g90_off",
+        "pair_id": "r2_p0256_c008_g90",
+        "condition_id": "p0256_c008_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "76ede460e0f57e1499a7ae9a37598dfee82d00cef678685d22e64eb3db6aa415"
+    },
+    {
+      "order": 69,
+      "round": 2,
+      "position_in_round": 15,
+      "pair_id": "r2_p4096_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p4096_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c032_g90_off",
+        "pair_id": "r2_p4096_c032_g90",
+        "condition_id": "p4096_c032_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "b0fe381f1a2bbc123350e6d83afea153552d8000e67e3d7c4c82d212e6752078"
+    },
+    {
+      "order": 70,
+      "round": 2,
+      "position_in_round": 15,
+      "pair_id": "r2_p4096_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p4096_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c032_g90_on",
+        "pair_id": "r2_p4096_c032_g90",
+        "condition_id": "p4096_c032_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "a796cec0847d0f2dcba9259d807ec6e17d1f3b1df72c07e23ac7fc4c167e6282"
+    },
+    {
+      "order": 71,
+      "round": 2,
+      "position_in_round": 16,
+      "pair_id": "r2_p0256_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p0256_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c032_g90_off",
+        "pair_id": "r2_p0256_c032_g90",
+        "condition_id": "p0256_c032_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d419ba618d1f4cb84f5bd1461e087023ff9a1cf7ca6e7788e199221d77ed9570"
+    },
+    {
+      "order": 72,
+      "round": 2,
+      "position_in_round": 16,
+      "pair_id": "r2_p0256_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p0256_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0256_c032_g90_on",
+        "pair_id": "r2_p0256_c032_g90",
+        "condition_id": "p0256_c032_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "e80169f8c525f4b74eeddad0e7b62953564c3eeb6845b57bef368b0de2a473b3"
+    },
+    {
+      "order": 73,
+      "round": 2,
+      "position_in_round": 17,
+      "pair_id": "r2_p1024_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p1024_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c128_g90_on",
+        "pair_id": "r2_p1024_c128_g90",
+        "condition_id": "p1024_c128_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "daea2912eb765ab57d0140852552a7224aad8da67168834de208f443f0b86040"
+    },
+    {
+      "order": 74,
+      "round": 2,
+      "position_in_round": 17,
+      "pair_id": "r2_p1024_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p1024_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p1024_c128_g90_off",
+        "pair_id": "r2_p1024_c128_g90",
+        "condition_id": "p1024_c128_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "d9cf1fb33daec8b863a08bf14ab81e3b1df20f49813fa9d0da52d91a91035c60"
+    },
+    {
+      "order": 75,
+      "round": 2,
+      "position_in_round": 18,
+      "pair_id": "r2_p0000_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p0000_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c128_g90_off",
+        "pair_id": "r2_p0000_c128_g90",
+        "condition_id": "p0000_c128_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "ab1bf2a007f291a5a1c21b7625aca3e4c50fbd7f4a93b1825530f84af37536b9"
+    },
+    {
+      "order": 76,
+      "round": 2,
+      "position_in_round": 18,
+      "pair_id": "r2_p0000_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p0000_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p0000_c128_g90_on",
+        "pair_id": "r2_p0000_c128_g90",
+        "condition_id": "p0000_c128_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "ff59c2dd2e3f448c19cf7f5c5f5cc8737e354e9e184328b4410590cd088a4ec8"
+    },
+    {
+      "order": 77,
+      "round": 2,
+      "position_in_round": 19,
+      "pair_id": "r2_p4096_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p4096_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c128_g90_on",
+        "pair_id": "r2_p4096_c128_g90",
+        "condition_id": "p4096_c128_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "dde9e53591b18633e8828bdb4b2afbe9decd8a2a9aa4a0d4dff194d19d525bde"
+    },
+    {
+      "order": 78,
+      "round": 2,
+      "position_in_round": 19,
+      "pair_id": "r2_p4096_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r2_p4096_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p4096_c128_g90_off",
+        "pair_id": "r2_p4096_c128_g90",
+        "condition_id": "p4096_c128_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "21d8ca4c7da73dd6de2ea5e737cf662d54d9f15375706d096e80c8eb39ec3106"
+    },
+    {
+      "order": 79,
+      "round": 2,
+      "position_in_round": 20,
+      "pair_id": "r2_p2048_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p2048_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c128_g90_off",
+        "pair_id": "r2_p2048_c128_g90",
+        "condition_id": "p2048_c128_g90",
+        "round": 2,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "8252f0b89c76b27c9fe7702d7c8289352b9e26da2771a7556cb21c2747a487be"
+    },
+    {
+      "order": 80,
+      "round": 2,
+      "position_in_round": 20,
+      "pair_id": "r2_p2048_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r2_p2048_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r2_p2048_c128_g90_on",
+        "pair_id": "r2_p2048_c128_g90",
+        "condition_id": "p2048_c128_g90",
+        "round": 2,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "fb1d8a43eadef96f32e653382c5fc77e30c278abaf589734fb82925a2b3aa61e"
+    },
+    {
+      "order": 81,
+      "round": 3,
+      "position_in_round": 1,
+      "pair_id": "r3_p1024_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p1024_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c032_g90_on",
+        "pair_id": "r3_p1024_c032_g90",
+        "condition_id": "p1024_c032_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "241844d86962d121bfd1cad16afde59dd875bb244f1bb53a59d957c9265fcebb"
+    },
+    {
+      "order": 82,
+      "round": 3,
+      "position_in_round": 1,
+      "pair_id": "r3_p1024_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p1024_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c032_g90_off",
+        "pair_id": "r3_p1024_c032_g90",
+        "condition_id": "p1024_c032_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "378079d9b855f08ee7ff96f4536d061b90795e0ddb527751f301e3adce00418e"
+    },
+    {
+      "order": 83,
+      "round": 3,
+      "position_in_round": 2,
+      "pair_id": "r3_p0256_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0256_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c001_g90_off",
+        "pair_id": "r3_p0256_c001_g90",
+        "condition_id": "p0256_c001_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "514a8e70a25539c60f694e10dfcb2bcbc0882aa4a7aebec132d00105ffbe2752"
+    },
+    {
+      "order": 84,
+      "round": 3,
+      "position_in_round": 2,
+      "pair_id": "r3_p0256_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0256_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c001_g90_on",
+        "pair_id": "r3_p0256_c001_g90",
+        "condition_id": "p0256_c001_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "219d60404b014fbbfde7c53432160cc10bbf28c355b059a173eca60016aae303"
+    },
+    {
+      "order": 85,
+      "round": 3,
+      "position_in_round": 3,
+      "pair_id": "r3_p4096_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p4096_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c032_g90_off",
+        "pair_id": "r3_p4096_c032_g90",
+        "condition_id": "p4096_c032_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "de39301536bfbab02308a7b84ffd60d5c3e7f25a21bb5e1c7fd24f45c0d50b1a"
+    },
+    {
+      "order": 86,
+      "round": 3,
+      "position_in_round": 3,
+      "pair_id": "r3_p4096_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p4096_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c032_g90_on",
+        "pair_id": "r3_p4096_c032_g90",
+        "condition_id": "p4096_c032_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "b4f49d2f2bfe50b55cf83ed7414a5bb510309bc5e312a77cf30919f71af2f38f"
+    },
+    {
+      "order": 87,
+      "round": 3,
+      "position_in_round": 4,
+      "pair_id": "r3_p1024_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p1024_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c128_g90_off",
+        "pair_id": "r3_p1024_c128_g90",
+        "condition_id": "p1024_c128_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "6e9dfb14ee3f76c18411499d29e0068206906ec1d701b690c02de3a1f0df86ac"
+    },
+    {
+      "order": 88,
+      "round": 3,
+      "position_in_round": 4,
+      "pair_id": "r3_p1024_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p1024_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c128_g90_on",
+        "pair_id": "r3_p1024_c128_g90",
+        "condition_id": "p1024_c128_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "68dd783b2ddfe7730573b0b01f2b020473e9cd6addaca9b6a4e70e0af878e0d3"
+    },
+    {
+      "order": 89,
+      "round": 3,
+      "position_in_round": 5,
+      "pair_id": "r3_p0000_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p0000_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c032_g90_on",
+        "pair_id": "r3_p0000_c032_g90",
+        "condition_id": "p0000_c032_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "a1394ab39ca88df4fdbced3bccd10d852366f90414218c724fa2a506f24a79de"
+    },
+    {
+      "order": 90,
+      "round": 3,
+      "position_in_round": 5,
+      "pair_id": "r3_p0000_c032_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p0000_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c032_g90_off",
+        "pair_id": "r3_p0000_c032_g90",
+        "condition_id": "p0000_c032_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "86f8325ca9d2f4db83c0ee81b669be5f2dbc02e76234fb8c72bff9181015edb0"
+    },
+    {
+      "order": 91,
+      "round": 3,
+      "position_in_round": 6,
+      "pair_id": "r3_p0000_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0000_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c128_g90_off",
+        "pair_id": "r3_p0000_c128_g90",
+        "condition_id": "p0000_c128_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "503c4c1181e6e3ab674715ed85640aae790253edf1fa4a69d95725a67c093bf4"
+    },
+    {
+      "order": 92,
+      "round": 3,
+      "position_in_round": 6,
+      "pair_id": "r3_p0000_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0000_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c128_g90_on",
+        "pair_id": "r3_p0000_c128_g90",
+        "condition_id": "p0000_c128_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "1f091a0f768be31796ad6c1fcaceb13521e1f97e381eb2e3d08fd1e81ed591bf"
+    },
+    {
+      "order": 93,
+      "round": 3,
+      "position_in_round": 7,
+      "pair_id": "r3_p0256_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p0256_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c008_g90_on",
+        "pair_id": "r3_p0256_c008_g90",
+        "condition_id": "p0256_c008_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "fc2e5f2fa9caee1868233f8e2a827a456491fb99f619254a53db366fd90df35b"
+    },
+    {
+      "order": 94,
+      "round": 3,
+      "position_in_round": 7,
+      "pair_id": "r3_p0256_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p0256_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c008_g90_off",
+        "pair_id": "r3_p0256_c008_g90",
+        "condition_id": "p0256_c008_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "1e478b7daa5f85570176c3943f6495761c03964bf7573a31ac0a5cb48ee232b8"
+    },
+    {
+      "order": 95,
+      "round": 3,
+      "position_in_round": 8,
+      "pair_id": "r3_p2048_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p2048_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c001_g90_on",
+        "pair_id": "r3_p2048_c001_g90",
+        "condition_id": "p2048_c001_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "1509b21135b0b3cc6787440899d6bd8328988e81d114e54cae8a2236dfd4b086"
+    },
+    {
+      "order": 96,
+      "round": 3,
+      "position_in_round": 8,
+      "pair_id": "r3_p2048_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p2048_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c001_g90_off",
+        "pair_id": "r3_p2048_c001_g90",
+        "condition_id": "p2048_c001_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "76aefba05f301fe2bf20cab19099268e2f03ec6109ca0bdb8e8388c04b2312e4"
+    },
+    {
+      "order": 97,
+      "round": 3,
+      "position_in_round": 9,
+      "pair_id": "r3_p0256_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0256_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c032_g90_off",
+        "pair_id": "r3_p0256_c032_g90",
+        "condition_id": "p0256_c032_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "c2a7ff4858fe7544f18f5fe54534cbd6bc20cc1df7683e9ee90ad02d41aaf1d1"
+    },
+    {
+      "order": 98,
+      "round": 3,
+      "position_in_round": 9,
+      "pair_id": "r3_p0256_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0256_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c032_g90_on",
+        "pair_id": "r3_p0256_c032_g90",
+        "condition_id": "p0256_c032_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "6efd39a9346be4c845be921890d8c8658833be4cd1599c2080e288920f9b8283"
+    },
+    {
+      "order": 99,
+      "round": 3,
+      "position_in_round": 10,
+      "pair_id": "r3_p4096_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p4096_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c008_g90_off",
+        "pair_id": "r3_p4096_c008_g90",
+        "condition_id": "p4096_c008_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "026c548d385a1e2c19938363a3e0a58fe2e1ac4ba00eae9a4b954dc1975f0fc4"
+    },
+    {
+      "order": 100,
+      "round": 3,
+      "position_in_round": 10,
+      "pair_id": "r3_p4096_c008_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p4096_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c008_g90_on",
+        "pair_id": "r3_p4096_c008_g90",
+        "condition_id": "p4096_c008_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "b5809d96ce542fd3107e2dc4bd18f9521d932b4503434375bcc8ca6438425b04"
+    },
+    {
+      "order": 101,
+      "round": 3,
+      "position_in_round": 11,
+      "pair_id": "r3_p2048_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p2048_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c128_g90_on",
+        "pair_id": "r3_p2048_c128_g90",
+        "condition_id": "p2048_c128_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "b8ce2ce9c9325f89d84ee6b5c6f0218b47f9f1946178bf8bae20cef973852129"
+    },
+    {
+      "order": 102,
+      "round": 3,
+      "position_in_round": 11,
+      "pair_id": "r3_p2048_c128_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p2048_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c128_g90_off",
+        "pair_id": "r3_p2048_c128_g90",
+        "condition_id": "p2048_c128_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "94fd86a5b78a6c195e1c54d42555f67b94006f07e72c8a49313199fab16e1b6b"
+    },
+    {
+      "order": 103,
+      "round": 3,
+      "position_in_round": 12,
+      "pair_id": "r3_p0000_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p0000_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c008_g90_on",
+        "pair_id": "r3_p0000_c008_g90",
+        "condition_id": "p0000_c008_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "6e162065d6c421fa4d3f06a745f96c29aef2cf980bda3f8f241918baa0d98f36"
+    },
+    {
+      "order": 104,
+      "round": 3,
+      "position_in_round": 12,
+      "pair_id": "r3_p0000_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p0000_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c008_g90_off",
+        "pair_id": "r3_p0000_c008_g90",
+        "condition_id": "p0000_c008_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "7012fbde25d41699cfd925104f21f583caa7dc01848282a0bb509026aeb5d643"
+    },
+    {
+      "order": 105,
+      "round": 3,
+      "position_in_round": 13,
+      "pair_id": "r3_p4096_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p4096_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c001_g90_on",
+        "pair_id": "r3_p4096_c001_g90",
+        "condition_id": "p4096_c001_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "96307a2eb1e41ab172946a4e2667286efc251b89862f26eb4cf951f1dfd1d5fc"
+    },
+    {
+      "order": 106,
+      "round": 3,
+      "position_in_round": 13,
+      "pair_id": "r3_p4096_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p4096_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c001_g90_off",
+        "pair_id": "r3_p4096_c001_g90",
+        "condition_id": "p4096_c001_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "3aa66ed5424a8c215b2e375a4ca0095fe146f92398515ebe257c7fc8162fc170"
+    },
+    {
+      "order": 107,
+      "round": 3,
+      "position_in_round": 14,
+      "pair_id": "r3_p0000_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0000_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c001_g90_off",
+        "pair_id": "r3_p0000_c001_g90",
+        "condition_id": "p0000_c001_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "0912468afe13dc8feb8dcd86bb74730955dd24130c8a54e584ef28f1deb938ea"
+    },
+    {
+      "order": 108,
+      "round": 3,
+      "position_in_round": 14,
+      "pair_id": "r3_p0000_c001_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0000_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0000_c001_g90_on",
+        "pair_id": "r3_p0000_c001_g90",
+        "condition_id": "p0000_c001_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 0,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0000_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9e7790f9451633ec1a41455668af87a297d3eae56dbe3f59a3b64fc85ee34837"
+    },
+    {
+      "order": 109,
+      "round": 3,
+      "position_in_round": 15,
+      "pair_id": "r3_p1024_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p1024_c001_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c001_g90_on",
+        "pair_id": "r3_p1024_c001_g90",
+        "condition_id": "p1024_c001_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "eab33186e431a425a573ac9a23bda2cd2203b6e04bcbf41ba9acfd109f9bfb8b"
+    },
+    {
+      "order": 110,
+      "round": 3,
+      "position_in_round": 15,
+      "pair_id": "r3_p1024_c001_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p1024_c001_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c001_g90_off",
+        "pair_id": "r3_p1024_c001_g90",
+        "condition_id": "p1024_c001_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 1,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "ea7f09da0485301cf65d3e957455495cd162a524ecbbaf64ff6f3afae3cda71b"
+    },
+    {
+      "order": 111,
+      "round": 3,
+      "position_in_round": 16,
+      "pair_id": "r3_p2048_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p2048_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c008_g90_on",
+        "pair_id": "r3_p2048_c008_g90",
+        "condition_id": "p2048_c008_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "85b2982073e6a9d59eb34f4d150e8fc9eefa7d87425dba63c7d4a1c90b54766d"
+    },
+    {
+      "order": 112,
+      "round": 3,
+      "position_in_round": 16,
+      "pair_id": "r3_p2048_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p2048_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c008_g90_off",
+        "pair_id": "r3_p2048_c008_g90",
+        "condition_id": "p2048_c008_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "a207ce8de7e32cf0c73aed6b613e8ed9bbae12d1c3e720aac3bb644a6d33e76e"
+    },
+    {
+      "order": 113,
+      "round": 3,
+      "position_in_round": 17,
+      "pair_id": "r3_p0256_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0256_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c128_g90_off",
+        "pair_id": "r3_p0256_c128_g90",
+        "condition_id": "p0256_c128_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "60d7df3dbe666e97335fb4cc3ac95107a5b23932afc648f0eaea06abf3627056"
+    },
+    {
+      "order": 114,
+      "round": 3,
+      "position_in_round": 17,
+      "pair_id": "r3_p0256_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p0256_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p0256_c128_g90_on",
+        "pair_id": "r3_p0256_c128_g90",
+        "condition_id": "p0256_c128_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 256,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p0256_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "89debf0b5a7e099bd2f1b6e2b3a25c0f74062b043a003c8296aeadf7e0f8c44a"
+    },
+    {
+      "order": 115,
+      "round": 3,
+      "position_in_round": 18,
+      "pair_id": "r3_p2048_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p2048_c032_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c032_g90_off",
+        "pair_id": "r3_p2048_c032_g90",
+        "condition_id": "p2048_c032_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "39652b85c22e0ea355f9da901d7e372bdec82a8e4b72d8645a742f866292f746"
+    },
+    {
+      "order": 116,
+      "round": 3,
+      "position_in_round": 18,
+      "pair_id": "r3_p2048_c032_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p2048_c032_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p2048_c032_g90_on",
+        "pair_id": "r3_p2048_c032_g90",
+        "condition_id": "p2048_c032_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 2048,
+        "concurrency": 32,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p2048_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "0063352e48a077c3626fd72a95f19364ac6698c1aa4e348cd6b0cd20a61392a5"
+    },
+    {
+      "order": 117,
+      "round": 3,
+      "position_in_round": 19,
+      "pair_id": "r3_p4096_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p4096_c128_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c128_g90_off",
+        "pair_id": "r3_p4096_c128_g90",
+        "condition_id": "p4096_c128_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "9bdfe871c026b4cbc964e0da6f328dac2e7760880a0495ba5fafaaa3e351916c"
+    },
+    {
+      "order": 118,
+      "round": 3,
+      "position_in_round": 19,
+      "pair_id": "r3_p4096_c128_g90",
+      "first_in_pair": "off",
+      "run_id": "r3_p4096_c128_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p4096_c128_g90_on",
+        "pair_id": "r3_p4096_c128_g90",
+        "condition_id": "p4096_c128_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 4096,
+        "concurrency": 128,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p4096_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "1e2cc458d7cd904c490ae95d35ff37b7a3f756a463a0bdcabaeda433b3b70583"
+    },
+    {
+      "order": 119,
+      "round": 3,
+      "position_in_round": 20,
+      "pair_id": "r3_p1024_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p1024_c008_g90_on",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c008_g90_on",
+        "pair_id": "r3_p1024_c008_g90",
+        "condition_id": "p1024_c008_g90",
+        "round": 3,
+        "cache": "on",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": true
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "acb1b6760c98d2910f2ecb4878be1cb087eb507cae2fa0aac870b104f35d6696"
+    },
+    {
+      "order": 120,
+      "round": 3,
+      "position_in_round": 20,
+      "pair_id": "r3_p1024_c008_g90",
+      "first_in_pair": "on",
+      "run_id": "r3_p1024_c008_g90_off",
+      "config": {
+        "experiment": "main",
+        "batch": 1,
+        "run_id": "r3_p1024_c008_g90_off",
+        "pair_id": "r3_p1024_c008_g90",
+        "condition_id": "p1024_c008_g90",
+        "round": 3,
+        "cache": "off",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prefix_len": 1024,
+        "concurrency": 8,
+        "gpu_memory_utilization": 0.9,
+        "server": {
+          "port": 8000,
+          "max_model_len": 8192,
+          "gpu_memory_utilization": 0.9,
+          "max_num_seqs": 256,
+          "max_num_batched_tokens": 2048,
+          "generation_config": "vllm",
+          "seed": 0,
+          "prefix_caching": false
+        },
+        "workload": {
+          "suffix_len": 256,
+          "output_len": 128,
+          "num_prompts": 500,
+          "warmup_prompts": 50,
+          "seed": 0,
+          "block_size": 16
+        },
+        "workload_key": "p1024_s256_o128_n500_w50_seed0",
+        "bench": {
+          "temperature": 0.0,
+          "timeout_s": 7200,
+          "warmup_timeout_s": 1800
+        },
+        "telemetry": {
+          "required": true,
+          "interval_s": 2
+        }
+      },
+      "identity_sha256": "da078b4991f5d7b22cc0c4bbc3aa2e569717986a206286101305a12bb7b62256"
+    }
+  ],
+  "workloads": {
+    "p0000_s256_o128_n500_w50_seed0": {
+      "key": "p0000_s256_o128_n500_w50_seed0",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "vocab_size": 151643,
+      "prefix_len": 0,
+      "suffix_len": 256,
+      "output_len": 128,
+      "warmup_prompts": 50,
+      "num_prompts": 500,
+      "seed": 0,
+      "block_size": 16,
+      "prompt_tokens_each": 256,
+      "shared_prefix_ids_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "warmup_input_ids_sha256": "635b5e98d6af285342316e5b0594ffc6e75f0f7833d07354ccacfa4a5b27e0bd",
+      "main_input_ids_sha256": "affeb5cb2a11bbf48f52ba39d9f74a9189f94d590a8ffc0fa7e0fc21d375c356",
+      "warmup_sha256": "49becba567fb05520f2086bc99a1f91ebd80409f475c03a74176ab3d3582761b",
+      "main_sha256": "b557c178f1b4bbfa80e9a33a911cfb0909f53b7b256d05c3656ce416ccb778bf",
+      "special_tokens_added": 0,
+      "server_prompt_tokens_each": 256,
+      "cacheable_tokens_per_request": 0,
+      "verified_prompts": 550
+    },
+    "p2048_s256_o128_n500_w50_seed0": {
+      "key": "p2048_s256_o128_n500_w50_seed0",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "vocab_size": 151643,
+      "prefix_len": 2048,
+      "suffix_len": 256,
+      "output_len": 128,
+      "warmup_prompts": 50,
+      "num_prompts": 500,
+      "seed": 0,
+      "block_size": 16,
+      "prompt_tokens_each": 2304,
+      "shared_prefix_ids_sha256": "04debc6069ff7f4810596bf78e1425e1bb734353d9cecc62f646cc6c589ee81e",
+      "warmup_input_ids_sha256": "33081cf6a7d14ee467f3e22f7539ee3fbed8a755be041e28b0066e9988cbe1e5",
+      "main_input_ids_sha256": "c0cc4c731c1e5693d3c227a5136cd1b54f6effc4aae6878e49dc7519a5b12a33",
+      "warmup_sha256": "a7b628e12b5dbe3e60aee6fec07b4394fe9dee96d27fd180daaf4d7a4bc5a901",
+      "main_sha256": "573a39405c3d44c571e0d99c04fd8064e8e5defdd68c644ce0f4cb300b6552f8",
+      "special_tokens_added": 0,
+      "server_prompt_tokens_each": 2304,
+      "cacheable_tokens_per_request": 2048,
+      "verified_prompts": 550
+    },
+    "p0256_s256_o128_n500_w50_seed0": {
+      "key": "p0256_s256_o128_n500_w50_seed0",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "vocab_size": 151643,
+      "prefix_len": 256,
+      "suffix_len": 256,
+      "output_len": 128,
+      "warmup_prompts": 50,
+      "num_prompts": 500,
+      "seed": 0,
+      "block_size": 16,
+      "prompt_tokens_each": 512,
+      "shared_prefix_ids_sha256": "a78c86288d7748c170c9044930a1a53492e6d38c569a57156627fa6788b215e4",
+      "warmup_input_ids_sha256": "a4ed3f7216866e44142b82a10b614a6c582037f182ddee9f5ada0b3d025da016",
+      "main_input_ids_sha256": "98828ac2e0f46bef2d05434b51dc71716320b104e0c0b9fdb00b7ca6d7899a4f",
+      "warmup_sha256": "df3f3cefe11b47dc86d0ffff3edb73ce5895940cc33a2fdb2f65ad47f1bef37e",
+      "main_sha256": "bba5416540fc21dc46e9a49d034cdb6c51a44cf050f90ecfd143003ed2f3ce36",
+      "special_tokens_added": 0,
+      "server_prompt_tokens_each": 512,
+      "cacheable_tokens_per_request": 256,
+      "verified_prompts": 550
+    },
+    "p1024_s256_o128_n500_w50_seed0": {
+      "key": "p1024_s256_o128_n500_w50_seed0",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "vocab_size": 151643,
+      "prefix_len": 1024,
+      "suffix_len": 256,
+      "output_len": 128,
+      "warmup_prompts": 50,
+      "num_prompts": 500,
+      "seed": 0,
+      "block_size": 16,
+      "prompt_tokens_each": 1280,
+      "shared_prefix_ids_sha256": "789c470d3b0bb070ccdc243047b0043d828356a2c9610fc8ba90b0375a7cb61d",
+      "warmup_input_ids_sha256": "b16a25ad6d6d7d229d3986159f9d70fbe39670ce3d70e0e2211ffa3ad643f506",
+      "main_input_ids_sha256": "22506079e42fe312fb38bae7b133f8e031431c8bf7c31cfd76345dcb6b4977e6",
+      "warmup_sha256": "a6283f27aa4209d969b41316435703210443075a266301d16ef9b8183b5f1f37",
+      "main_sha256": "751aad47d1d10fde4c7143a10462b9f76e409761e8550be51e021b9371d746bb",
+      "special_tokens_added": 0,
+      "server_prompt_tokens_each": 1280,
+      "cacheable_tokens_per_request": 1024,
+      "verified_prompts": 550
+    },
+    "p4096_s256_o128_n500_w50_seed0": {
+      "key": "p4096_s256_o128_n500_w50_seed0",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "vocab_size": 151643,
+      "prefix_len": 4096,
+      "suffix_len": 256,
+      "output_len": 128,
+      "warmup_prompts": 50,
+      "num_prompts": 500,
+      "seed": 0,
+      "block_size": 16,
+      "prompt_tokens_each": 4352,
+      "shared_prefix_ids_sha256": "d490550ec3fe7910b070c4304f360198c0567ea55a7dd1fad5b0384b993da1b2",
+      "warmup_input_ids_sha256": "8c53f10f07bc03f36733f3775b9ea864dfac4f0fefa4d998d78ee4f89f992a2a",
+      "main_input_ids_sha256": "c9155d4f92a36409cb3a4eccab6d09f0530064edbb8417380fdbf5276ce9109e",
+      "warmup_sha256": "a8b9069c4c3e6cd6136e56d891bbd34d3269576a11e0d171fc63702a00c8d81d",
+      "main_sha256": "685cb78ab33fab36e52ecee5974d048af635f2bf4dd2867f0a38df2b8b1e3133",
+      "special_tokens_added": 0,
+      "server_prompt_tokens_each": 4352,
+      "cacheable_tokens_per_request": 4096,
+      "verified_prompts": 550
+    }
+  },
+  "env_identity": {
+    "gpu_models": [
+      "NVIDIA A40"
+    ],
+    "gpu_count": 1,
+    "vllm": "0.33.0",
+    "torch": "2.14.0",
+    "transformers": "5.20.2",
+    "python": "3.12.3"
+  },
+  "measurement_code": {
+    "files": {
+      "ident.py": "0401658b8f98effd1ac63f853755dcd089c75d6226627c06aa003aaf2011a318",
+      "store.py": "5ca80a28116b379558ec928c557c54239744ad7bd3b4af187111c80751fc857e",
+      "spec.py": "696c97b38d5f00db2a9ade8bbc42544ebbc124af9dbceac6be3f126e6f296d40",
+      "workload.py": "80032211b3f39c123ae8272447b5c3830ccbf32aeb92e8cccea38de80b758b4c",
+      "envinfo.py": "f635a99649e1f32eb3d89771357a006abc11184d6d721bc3bb148f3ac0df3a4e",
+      "server.py": "c9acb4e0b6774012b31a5f709ff7265968e1ade3e2194dbc840a59e3acce350d",
+      "metrics.py": "531774fc3a9e2bbaf6131e638bb7f45cc41fc1fdd990425070d063412e9c2b37",
+      "bench.py": "cc5b9581192f714f2cfb61814f3f4a855066cd0978a5d4ffe60196a385cf4f83",
+      "schema.py": "ed38bf9c93923d91737ddabfdb76fd84d08e4fbd92049569e58d7f0b75aa751e",
+      "runner.py": "e81368a320849e41cb3ee4c43f2c2e043a4bb46aed8a97a47599048b50d1df0e"
+    },
+    "sha256": "06913c7631fec535905de70c7ec693ed8496f32184124f2fbb5acdaf45b3c1f7"
+  },
+  "metric_definitions": {
+    "clock": "client side, inside `vllm bench serve` (time.perf_counter)",
+    "start_s": "when the request was sent, relative to the first request of the run",
+    "client_queue_s": "time a request waited in the client for a free concurrency slot before it was sent; not part of any latency below",
+    "ttft_s": "time from sending the request to receiving the first output token",
+    "e2e_s": "time from sending the request to receiving the last output token",
+    "tpot_s": "(e2e_s - ttft_s) / (output_tokens - 1): mean gap between output tokens after the first",
+    "duration_s": "last response end minus first request start, from the rows",
+    "output_tok_per_s": "sum of output_tokens of completed requests / duration_s",
+    "requests_per_s": "completed requests / duration_s",
+    "percentiles": "numpy.percentile with linear interpolation over the completed requests of one run (500 in the main matrix)",
+    "burst": "the first `concurrency` requests by start time: they are sent together at t=0 and queue behind each other",
+    "steady": "every request after the burst",
+    "peak_in_flight": "largest number of requests between send and last token at any instant, from the rows; an end within 1 microsecond of a start counts as before it",
+    "cache_hit_rate": "prefix_cache_hits / prefix_cache_queries, both as counter differences between the snapshot after warm-up and the snapshot after the measured requests",
+    "counters": "request_success, prompt_tokens, generation_tokens, prefix_cache_queries, prefix_cache_hits, num_preemptions: differences over the measured requests only",
+    "pair_speedup": "output_tok_per_s of the cache-on run / output_tok_per_s of the cache-off run of the same pair",
+    "condition_speedup": "geometric mean of the pair speedups of a condition (primary metric); min and max of the pairs are reported next to it"
+  },
+  "validity_rules": {
+    "requests": "every measured and warm-up request completed without error",
+    "output_length": "every request generated exactly workload.output_len tokens",
+    "input_length": "every prompt was counted as the expected number of tokens by the client and, in total, by the server",
+    "fresh_server": "the server had handled no request before the warm-up",
+    "counter_window": "request_success, prompt_tokens and generation_tokens moved by exactly the measured requests between the two snapshots",
+    "cache_hits": "with no preemption: cache off gives 0 hit tokens; cache on gives exactly num_prompts x cacheable_tokens_per_request",
+    "in_flight": "peak_in_flight never exceeds the configured concurrency",
+    "timing": "0 < ttft_s <= e2e_s and all numbers are finite",
+    "failure": "an attempt that breaks a rule is kept and reported as FAILED; it is never averaged in and never skipped by resume"
+  },
+  "manifest_sha256": "39fab210bbba8680f6edd5201f88a28d0c016eba402801e33bbb9aac1eff1c1a",
+  "experiment": "main",
+  "batch": 1,
+  "frozen_at": "2026-11-13T10:26:45+00:00",
+  "spec_file": "v3/protocol/main.yaml",
+  "spec_file_sha256": "e4407b38401f56781409e5af696c41895dde394b305159c9f8a0a373adbf88f4",
+  "git_commit": "88bf99e8cb7d020d7acafac68432ca152df7f216",
+  "allow_dirty": false,
+  "counts": {
+    "conditions": 20,
+    "rounds": 3,
+    "pairs": 60,
+    "runs": 120,
+    "measured_requests": 60000,
+    "warmup_requests": 6000,
+    "pairs_with_cache_on_first": 30,
+    "cache_on_first_by_round": {
+      "1": 10,
+      "2": 10,
+      "3": 10
+    }
+  }
+}

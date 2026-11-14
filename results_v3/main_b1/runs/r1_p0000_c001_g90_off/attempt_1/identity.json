@@ -1,0 +1,68 @@
+{
+  "protocol_version": "3.0.0",
+  "run_config": {
+    "experiment": "main",
+    "batch": 1,
+    "run_id": "r1_p0000_c001_g90_off",
+    "pair_id": "r1_p0000_c001_g90",
+    "condition_id": "p0000_c001_g90",
+    "round": 1,
+    "cache": "off",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prefix_len": 0,
+    "concurrency": 1,
+    "gpu_memory_utilization": 0.9,
+    "server": {
+      "port": 8000,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "max_num_seqs": 256,
+      "max_num_batched_tokens": 2048,
+      "generation_config": "vllm",
+      "seed": 0,
+      "prefix_caching": false
+    },
+    "workload": {
+      "suffix_len": 256,
+      "output_len": 128,
+      "num_prompts": 500,
+      "warmup_prompts": 50,
+      "seed": 0,
+      "block_size": 16
+    },
+    "workload_key": "p0000_s256_o128_n500_w50_seed0",
+    "bench": {
+      "temperature": 0.0,
+      "timeout_s": 7200,
+      "warmup_timeout_s": 1800
+    },
+    "telemetry": {
+      "required": true,
+      "interval_s": 2
+    }
+  },
+  "workload": {
+    "key": "p0000_s256_o128_n500_w50_seed0",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "warmup_sha256": "49becba567fb05520f2086bc99a1f91ebd80409f475c03a74176ab3d3582761b",
+    "main_sha256": "b557c178f1b4bbfa80e9a33a911cfb0909f53b7b256d05c3656ce416ccb778bf",
+    "warmup_input_ids_sha256": "635b5e98d6af285342316e5b0594ffc6e75f0f7833d07354ccacfa4a5b27e0bd",
+    "main_input_ids_sha256": "affeb5cb2a11bbf48f52ba39d9f74a9189f94d590a8ffc0fa7e0fc21d375c356",
+    "shared_prefix_ids_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+    "server_prompt_tokens_each": 256,
+    "cacheable_tokens_per_request": 0
+  },
+  "env_identity": {
+    "gpu_models": [
+      "NVIDIA A40"
+    ],
+    "gpu_count": 1,
+    "vllm": "0.33.0",
+    "torch": "2.14.0",
+    "transformers": "5.20.2",
+    "python": "3.12.3"
+  },
+  "measurement_code_sha256": "06913c7631fec535905de70c7ec693ed8496f32184124f2fbb5acdaf45b3c1f7",
+  "sha256": "d3c04e72f8944e19577b1d97b12c65f96ac1e107f790c2ca9ac51ba68a858c8a"
+}

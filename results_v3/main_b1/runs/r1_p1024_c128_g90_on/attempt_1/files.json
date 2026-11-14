@@ -1,0 +1,86 @@
+{
+  "bench_main.json": {
+    "sha256": "0eeb78df48d698c2ef748cb85ef0d484b7691f1f9def364a8bee59fc305b9160",
+    "bytes": 1972
+  },
+  "bench_main.log.gz": {
+    "sha256": "b68a7552a2e9a6840a9afab9db3a2b4c2989391a701c47d22fcf89b4b26ce4dd",
+    "bytes": 2966
+  },
+  "bench_warmup.json": {
+    "sha256": "1f14c8e460aae8054a3354c7656ad76e0def8e79e20bd9f8e6c672519c0a86ab",
+    "bytes": 1972
+  },
+  "bench_warmup.log.gz": {
+    "sha256": "9ccf5f32f282bf7f28cbd8b9567881fab76866f2c6237adcf826bffbc093f32e",
+    "bytes": 2136
+  },
+  "config.json": {
+    "sha256": "d2feda8d76c38e88dea4d5e722f2677baf78050f95ddfe4d9fc1171977c4e031",
+    "bytes": 2285
+  },
+  "counters.json": {
+    "sha256": "1e78007b9e887a2d9d0fc1926ae0a9fb2f205753abc45aade9b8273314d349ae",
+    "bytes": 747
+  },
+  "gpu_telemetry.csv": {
+    "sha256": "9bd4bde671532c372646039ee308a7c408a1a02a01b7555c7a83106c4bd2c80a",
+    "bytes": 4277
+  },
+  "identity.json": {
+    "sha256": "a71491c56aafa1c2ca6dc562660791a1c0597e594c9498f883ce9b3517cbe29f",
+    "bytes": 2143
+  },
+  "metrics_after.json": {
+    "sha256": "4750ee83e3f2ba8c964ac6fff2511dd5ef0f9afe0b4f6907386f54209f5774a5",
+    "bytes": 279
+  },
+  "metrics_after.txt.gz": {
+    "sha256": "24ac4ed62d375cc4dedb34a9260fb14fa04628b3137f329ca88db8473cfb10ea",
+    "bytes": 5850
+  },
+  "metrics_before.json": {
+    "sha256": "befb30dcae91d4a4f789abc6925b1063a925cda8741ae946802fd0cee223bde7",
+    "bytes": 274
+  },
+  "metrics_before.txt.gz": {
+    "sha256": "d6a312ecd32fe6fde970486b77c80dfa344121321d83daca755d125aa1ab496b",
+    "bytes": 5757
+  },
+  "metrics_fresh.json": {
+    "sha256": "c9681d6372bbcd2a2989b3da6211350046f1cb324c015607459d4b0dd9739271",
+    "bytes": 258
+  },
+  "metrics_fresh.txt.gz": {
+    "sha256": "84f3072b907949056201073398a954c824d42561b14851d907f3a735872c82ea",
+    "bytes": 5299
+  },
+  "requests.jsonl": {
+    "sha256": "96cacdac2ca39e96ffb1a878b92da45fe2a0a5c123f5da4a800fb7c8dba35466",
+    "bytes": 122152
+  },
+  "server.json": {
+    "sha256": "67654be85f59cd03a6d04ba360278b336dc43b9d6af19566ab5afa48e1389520",
+    "bytes": 1084
+  },
+  "server.log.gz": {
+    "sha256": "c106f48408bf758f966f47415559b750a5aca1cf351dcdc748b4e92c6e0a17d1",
+    "bytes": 7695
+  },
+  "server_timeseries.csv": {
+    "sha256": "5cabeaaef09279c88c50b7ce917766499295b60f45d1fe42c74ad1f6b72d8712",
+    "bytes": 3042
+  },
+  "summary.json": {
+    "sha256": "d627553085decb62139cf240b12fc7579edbda0b12397af00b926a58316c44f4",
+    "bytes": 1564
+  },
+  "telemetry.json": {
+    "sha256": "8a81e356bb082ab2d8b55bafe127bbcaa3dc6f9fdf14acec030885b3fb5f552a",
+    "bytes": 1178
+  },
+  "warmup_requests.jsonl": {
+    "sha256": "e1188b421ef4e9ca99c10a2b4b85059802c118b6a825aba6f9b1eee1253a5dcf",
+    "bytes": 12309
+  }
+}

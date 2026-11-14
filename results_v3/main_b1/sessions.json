@@ -1,0 +1,30 @@
+[
+  {
+    "session_id": 1,
+    "started_at": "2026-11-13T10:27:25+00:00",
+    "host": {
+      "hostname": "2680d7503de9",
+      "gpu_uuids": [
+        "GPU-46214f07-fbbb-3f3b-b582-76dbababb7c1"
+      ],
+      "driver_versions": [
+        "595.91.07"
+      ],
+      "pip_freeze_sha256": "6197c06bfd744941c44ce4e0721182ae55efa046d5a803d435d6ca05930e86df"
+    },
+    "git_commit": "88bf99e8cb7d020d7acafac68432ca152df7f216",
+    "telemetry_fields": [
+      "timestamp",
+      "uuid",
+      "temperature.gpu",
+      "power.draw",
+      "utilization.gpu",
+      "utilization.memory",
+      "memory.used",
+      "clocks.current.sm",
+      "clocks.current.memory"
+    ],
+    "workloads_verified": 5,
+    "environment_file": "environment_s1.json"
+  }
+]

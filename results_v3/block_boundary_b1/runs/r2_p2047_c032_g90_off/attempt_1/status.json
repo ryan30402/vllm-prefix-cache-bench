@@ -1,0 +1,15 @@
+{
+  "state": "VALIDATED",
+  "run_id": "r2_p2047_c032_g90_off",
+  "pair_id": "r2_p2047_c032_g90",
+  "attempt": 1,
+  "order": 16,
+  "session_id": 1,
+  "identity_sha256": "6d8d7c3e2282df0d7d511bb37d5aca0dbdc147fe230b13a543dd20a83364e9d0",
+  "manifest_sha256": "250c402296fabd0d1611fc0e1c8a12fd278e72c937bdb1e26d8e68035cc9fb67",
+  "runner_pid": 211820,
+  "started_at": "2026-11-14T12:57:05+00:00",
+  "finished_at": "2026-11-14T13:02:38+00:00",
+  "seconds": 334,
+  "files_sha256": "b3ed249e1b225db5971c1ff960706bdd7976cea383b2ca366589d8ebf70d9795"
+}

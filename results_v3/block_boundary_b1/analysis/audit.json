@@ -1,0 +1,296 @@
+{
+  "generated_at": "2026-11-14T13:38:27+00:00",
+  "experiment": "block_boundary",
+  "batch": 1,
+  "protocol_version": "3.0.0",
+  "manifest_sha256": "250c402296fabd0d1611fc0e1c8a12fd278e72c937bdb1e26d8e68035cc9fb67",
+  "frozen_git_commit": "961fb1f6da9087a33b3568e74047a95d2975077a",
+  "analysis_code_sha256": "b94655a0fa9873ce4f050f93506bdce60059534f2c3a00992577f94ffc94c1a7",
+  "planned": {
+    "conditions": 4,
+    "rounds": 3,
+    "pairs": 12,
+    "runs": 24,
+    "measured_requests": 12000,
+    "warmup_requests": 1200,
+    "pairs_with_cache_on_first": 6,
+    "cache_on_first_by_round": {
+      "1": 2,
+      "2": 2,
+      "3": 2
+    }
+  },
+  "complete_pairs": 12,
+  "missing_pairs": [],
+  "complete": true,
+  "attempts_by_state": {
+    "VALIDATED": 24
+  },
+  "measured_requests_in_tables": 12000,
+  "failed_requests_in_tables": 0,
+  "hit_checks": {
+    "exact": 24
+  },
+  "pairs_with_cache_on_first": 6,
+  "pairs_spanning_sessions": [],
+  "pairs_spanning_gpus": [],
+  "sessions": [
+    {
+      "session_id": 1,
+      "started_at": "2026-11-14T11:53:50+00:00",
+      "host": {
+        "hostname": "2680d7503de9",
+        "gpu_uuids": [
+          "GPU-46214f07-fbbb-3f3b-b582-76dbababb7c1"
+        ],
+        "driver_versions": [
+          "595.91.07"
+        ],
+        "pip_freeze_sha256": "6197c06bfd744941c44ce4e0721182ae55efa046d5a803d435d6ca05930e86df"
+      },
+      "git_commit": "961fb1f6da9087a33b3568e74047a95d2975077a",
+      "telemetry_fields": [
+        "timestamp",
+        "uuid",
+        "temperature.gpu",
+        "power.draw",
+        "utilization.gpu",
+        "utilization.memory",
+        "memory.used",
+        "clocks.current.sm",
+        "clocks.current.memory"
+      ],
+      "workloads_verified": 4,
+      "environment_file": "environment_s1.json"
+    }
+  ],
+  "distinct_hosts": 1,
+  "sources_by_condition": {
+    "p2048_c032_g90": [
+      "runs/r1_p2048_c032_g90_on/attempt_1",
+      "runs/r1_p2048_c032_g90_off/attempt_1",
+      "runs/r2_p2048_c032_g90_off/attempt_1",
+      "runs/r2_p2048_c032_g90_on/attempt_1",
+      "runs/r3_p2048_c032_g90_on/attempt_1",
+      "runs/r3_p2048_c032_g90_off/attempt_1"
+    ],
+    "p2047_c032_g90": [
+      "runs/r1_p2047_c032_g90_off/attempt_1",
+      "runs/r1_p2047_c032_g90_on/attempt_1",
+      "runs/r2_p2047_c032_g90_on/attempt_1",
+      "runs/r2_p2047_c032_g90_off/attempt_1",
+      "runs/r3_p2047_c032_g90_off/attempt_1",
+      "runs/r3_p2047_c032_g90_on/attempt_1"
+    ],
+    "p2064_c032_g90": [
+      "runs/r1_p2064_c032_g90_off/attempt_1",
+      "runs/r1_p2064_c032_g90_on/attempt_1",
+      "runs/r2_p2064_c032_g90_off/attempt_1",
+      "runs/r2_p2064_c032_g90_on/attempt_1",
+      "runs/r3_p2064_c032_g90_on/attempt_1",
+      "runs/r3_p2064_c032_g90_off/attempt_1"
+    ],
+    "p2049_c032_g90": [
+      "runs/r1_p2049_c032_g90_on/attempt_1",
+      "runs/r1_p2049_c032_g90_off/attempt_1",
+      "runs/r2_p2049_c032_g90_on/attempt_1",
+      "runs/r2_p2049_c032_g90_off/attempt_1",
+      "runs/r3_p2049_c032_g90_off/attempt_1",
+      "runs/r3_p2049_c032_g90_on/attempt_1"
+    ]
+  },
+  "attempts": [
+    {
+      "run_id": "r1_p2048_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2048_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2047_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2047_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2064_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2064_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2049_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r1_p2049_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2049_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2049_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2064_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2064_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2048_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2048_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2047_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r2_p2047_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2064_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2064_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2049_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2049_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2048_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2048_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2047_c032_g90_off",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    },
+    {
+      "run_id": "r3_p2047_c032_g90_on",
+      "attempt": "attempt_1",
+      "state": "VALIDATED",
+      "valid": true,
+      "error": "",
+      "problems": []
+    }
+  ]
+}

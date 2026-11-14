@@ -1,0 +1,68 @@
+{
+  "protocol_version": "3.0.0",
+  "run_config": {
+    "experiment": "block_boundary",
+    "batch": 1,
+    "run_id": "r2_p2064_c032_g90_off",
+    "pair_id": "r2_p2064_c032_g90",
+    "condition_id": "p2064_c032_g90",
+    "round": 2,
+    "cache": "off",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prefix_len": 2064,
+    "concurrency": 32,
+    "gpu_memory_utilization": 0.9,
+    "server": {
+      "port": 8000,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "max_num_seqs": 256,
+      "max_num_batched_tokens": 2048,
+      "generation_config": "vllm",
+      "seed": 0,
+      "prefix_caching": false
+    },
+    "workload": {
+      "suffix_len": 256,
+      "output_len": 128,
+      "num_prompts": 500,
+      "warmup_prompts": 50,
+      "seed": 0,
+      "block_size": 16
+    },
+    "workload_key": "p2064_s256_o128_n500_w50_seed0",
+    "bench": {
+      "temperature": 0.0,
+      "timeout_s": 7200,
+      "warmup_timeout_s": 1800
+    },
+    "telemetry": {
+      "required": true,
+      "interval_s": 2
+    }
+  },
+  "workload": {
+    "key": "p2064_s256_o128_n500_w50_seed0",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "warmup_sha256": "f8dd2202142f88b0158b31455d67fcbe249ed9cdf52db86248b7b4b0a9c0c7f6",
+    "main_sha256": "c8e932ce5d98958ee6a2ccce8804bcf40370f17e15223b74ecaae2846631ed28",
+    "warmup_input_ids_sha256": "5182015890ae384508a1ec82427c2404996794ce9a3f6fae2545fd052d532fc2",
+    "main_input_ids_sha256": "5e3f225449824f6ed3d0d05b0bb07bf32ff548111dca4990785d11e89802f662",
+    "shared_prefix_ids_sha256": "89ee1907a0315ad993b7582b505b1a6c0dfa10531ffbfd3f0b41cf161a87d1ea",
+    "server_prompt_tokens_each": 2320,
+    "cacheable_tokens_per_request": 2064
+  },
+  "env_identity": {
+    "gpu_models": [
+      "NVIDIA A40"
+    ],
+    "gpu_count": 1,
+    "vllm": "0.33.0",
+    "torch": "2.14.0",
+    "transformers": "5.20.2",
+    "python": "3.12.3"
+  },
+  "measurement_code_sha256": "06913c7631fec535905de70c7ec693ed8496f32184124f2fbb5acdaf45b3c1f7",
+  "sha256": "1b55e2c10a66f8916bdf9ea1d51c359665199185849826cab6635864a53e0b1d"
+}

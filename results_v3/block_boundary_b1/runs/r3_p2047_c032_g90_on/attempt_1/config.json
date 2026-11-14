@@ -1,0 +1,76 @@
+{
+  "run": {
+    "experiment": "block_boundary",
+    "batch": 1,
+    "run_id": "r3_p2047_c032_g90_on",
+    "pair_id": "r3_p2047_c032_g90",
+    "condition_id": "p2047_c032_g90",
+    "round": 3,
+    "cache": "on",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prefix_len": 2047,
+    "concurrency": 32,
+    "gpu_memory_utilization": 0.9,
+    "server": {
+      "port": 8000,
+      "max_model_len": 8192,
+      "gpu_memory_utilization": 0.9,
+      "max_num_seqs": 256,
+      "max_num_batched_tokens": 2048,
+      "generation_config": "vllm",
+      "seed": 0,
+      "prefix_caching": true
+    },
+    "workload": {
+      "suffix_len": 256,
+      "output_len": 128,
+      "num_prompts": 500,
+      "warmup_prompts": 50,
+      "seed": 0,
+      "block_size": 16
+    },
+    "workload_key": "p2047_s256_o128_n500_w50_seed0",
+    "bench": {
+      "temperature": 0.0,
+      "timeout_s": 7200,
+      "warmup_timeout_s": 1800
+    },
+    "telemetry": {
+      "required": true,
+      "interval_s": 2
+    }
+  },
+  "workload": {
+    "key": "p2047_s256_o128_n500_w50_seed0",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "vocab_size": 151643,
+    "prefix_len": 2047,
+    "suffix_len": 256,
+    "output_len": 128,
+    "warmup_prompts": 50,
+    "num_prompts": 500,
+    "seed": 0,
+    "block_size": 16,
+    "prompt_tokens_each": 2303,
+    "shared_prefix_ids_sha256": "05aaf11673b8de303f8391bd388b8567c76d09dd8b2870f28e8e4451e5ca8492",
+    "warmup_input_ids_sha256": "1362b41ae0c7334c8a89301600c562edd88271212cc447926478116694ddef9f",
+    "main_input_ids_sha256": "f048461af009a53e1eed404b16f43668dd821f9b0ade8d557d1d96d500c8e89a",
+    "warmup_sha256": "7ac75c5000fd246630b259e1270bfdadb9bd3e93bd87696ffa9503eee1e71c47",
+    "main_sha256": "5c76de3fc52c331c463402c53dfde9756710e85de1a98b01fe0c83b502d95448",
+    "special_tokens_added": 0,
+    "server_prompt_tokens_each": 2303,
+    "cacheable_tokens_per_request": 2032,
+    "verified_prompts": 550
+  },
+  "plan": {
+    "order": 24,
+    "round": 3,
+    "position_in_round": 4,
+    "first_in_pair": "off"
+  },
+  "attempt": 1,
+  "session_id": 1,
+  "manifest_sha256": "250c402296fabd0d1611fc0e1c8a12fd278e72c937bdb1e26d8e68035cc9fb67"
+}

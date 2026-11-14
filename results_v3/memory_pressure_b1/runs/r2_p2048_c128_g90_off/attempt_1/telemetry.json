@@ -1,0 +1,42 @@
+{
+  "marks": {
+    "telemetry_start": 1794667302.666579,
+    "warmup_start": 1794667302.7500505,
+    "warmup_end": 1794667336.162915,
+    "main_start": 1794667336.2197511,
+    "main_end": 1794667602.2948964,
+    "telemetry_stop": 1794667602.3794878
+  },
+  "interval_s": 2,
+  "gpu_fields": [
+    "timestamp",
+    "uuid",
+    "temperature.gpu",
+    "power.draw",
+    "utilization.gpu",
+    "utilization.memory",
+    "memory.used",
+    "clocks.current.sm",
+    "clocks.current.memory"
+  ],
+  "server_samples_total": 150,
+  "server_samples_in_main": 133,
+  "server_scrape_errors": 0,
+  "gpu_samples_total": 150,
+  "gpu_samples_in_main": 133,
+  "gpu_query_errors": 0,
+  "gpu_uuids": [
+    "GPU-46214f07-fbbb-3f3b-b582-76dbababb7c1"
+  ],
+  "server_running_mean": 94.65413533834587,
+  "server_running_max": 112.0,
+  "server_waiting_mean": 23.473684210526315,
+  "server_waiting_max": 119.0,
+  "kv_cache_usage_mean": 0.4858911062662745,
+  "kv_cache_usage_max": 0.5751956862062968,
+  "gpu_temperature_c_mean": 71.54135338345864,
+  "gpu_temperature_c_max": 74.0,
+  "gpu_power_w_mean": 290.1963909774436,
+  "gpu_utilization_pct_mean": 95.48872180451127,
+  "gpu_memory_used_mib_max": 41442.0
+}
